@@ -1,0 +1,105 @@
+import Link from "next/link";
+import { Card } from "@/components/ui/card";
+import { Container } from "@/components/ui/container";
+import { SectionHeading } from "@/components/ui/section-heading";
+
+export type Tier = {
+  name: string;
+  price: string;
+  highlight?: boolean;
+  features: string[];
+};
+
+const defaultTiers: Tier[] = [
+  {
+    name: "Basic",
+    price: "$59.99",
+    features: [
+      "MP3",
+      "Streaming & distribution limits per license",
+      "Producer retains master ownership",
+    ],
+  },
+  {
+    name: "Premium",
+    price: "$99.99",
+    highlight: true,
+    features: ["MP3 + WAV", "Higher distribution & stream caps", "Tag in intro"],
+  },
+  {
+    name: "Premium + Trackouts",
+    price: "$179.99",
+    features: ["Full trackouts / stems", "Expanded limits", "WAV + stems package"],
+  },
+  {
+    name: "Exclusive",
+    price: "$2,000+",
+    features: [
+      "Master ownership transfer (per agreement)",
+      "Removed from store after sale",
+      "Unlimited commercial use (per terms)",
+    ],
+  },
+];
+
+export function LicensingTierCards({
+  tiers = defaultTiers,
+  showSectionHeading = true,
+}: {
+  tiers?: Tier[];
+  showSectionHeading?: boolean;
+}) {
+  return (
+    <section id="licensing" className="scroll-mt-24 py-20">
+      <Container>
+        {showSectionHeading ? (
+          <SectionHeading
+            title="Licensing"
+            subtitle="Four tiers. One clear path from first release to exclusive ownership."
+            action={
+              <Link
+                href="/beats"
+                className="inline-flex rounded-md border border-[#016b28]/40 bg-[#016b28]/10 px-4 py-2 text-sm font-semibold text-[#016b28] transition hover:bg-[#016b28]/20"
+              >
+                Browse all tracks
+              </Link>
+            }
+          />
+        ) : null}
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          {tiers.map((tier) => (
+            <Card
+              key={tier.name}
+              glow={tier.highlight}
+              className={`flex flex-col ${tier.highlight ? "scale-[1.02] border-[#016b28]/40 lg:-mt-2" : ""}`}
+            >
+              {tier.highlight ? (
+                <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-[#D4AF37]">
+                  Popular
+                </p>
+              ) : null}
+              <h3 className="font-[family-name:var(--font-space-grotesk)] text-lg font-bold text-white">
+                {tier.name}
+              </h3>
+              <p className="mt-2 text-3xl font-bold text-white">{tier.price}</p>
+              <ul className="mt-4 flex-1 space-y-2 text-sm text-[#A1A1AA]">
+                {tier.features.map((f) => (
+                  <li key={f} className="flex gap-2">
+                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#016b28]" />
+                    <span>{f}</span>
+                  </li>
+                ))}
+              </ul>
+              <Link
+                href="/#licensing"
+                className="mt-6 inline-flex justify-center rounded-md bg-[#016b28] px-4 py-2.5 text-center text-sm font-semibold text-white transition hover:bg-[#1f9d55]"
+              >
+                Read license
+              </Link>
+            </Card>
+          ))}
+        </div>
+      </Container>
+    </section>
+  );
+}
