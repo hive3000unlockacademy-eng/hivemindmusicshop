@@ -8,7 +8,9 @@ export default function AdminLayout({
   return (
     <div className="min-h-screen bg-[#050505]">
       <header className="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 px-6 py-4">
-        <p className="text-sm font-semibold text-[#016b28]">HiveMind Admin</p>
+        <p className="font-[family-name:var(--font-beats-hero)] text-sm font-semibold tracking-tight text-[#016b28]">
+          HiveMind Admin
+        </p>
         <Link href="/" className="text-sm text-[#A1A1AA] hover:text-white">
           Storefront
         </Link>

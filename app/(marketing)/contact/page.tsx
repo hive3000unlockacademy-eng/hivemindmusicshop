@@ -15,7 +15,7 @@ export default function ContactPage() {
       <Container>
         <div className="grid gap-10 lg:grid-cols-2 lg:items-stretch lg:gap-12">
           <div className="order-2 flex min-h-0 flex-col lg:order-1">
-            <h1 className="font-[family-name:var(--font-space-grotesk)] text-4xl font-bold text-white">
+            <h1 className="font-[family-name:var(--font-beats-hero)] text-4xl font-semibold tracking-tight text-white">
               Contact
             </h1>
             <p className="mt-4 max-w-2xl text-[#A1A1AA]">

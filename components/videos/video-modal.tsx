@@ -36,7 +36,7 @@ export function VideoModal({
           <div>
             <h2
               id="video-modal-title"
-              className="font-[family-name:var(--font-space-grotesk)] text-lg font-bold text-white"
+              className="font-[family-name:var(--font-beats-hero)] text-lg font-semibold tracking-tight text-white"
             >
               {video.title}
             </h2>

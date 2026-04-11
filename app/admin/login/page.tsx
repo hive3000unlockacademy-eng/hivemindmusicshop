@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function AdminLoginPage() {
   return (
     <div className="mx-auto max-w-lg py-16">
-      <h1 className="font-[family-name:var(--font-space-grotesk)] text-3xl font-bold text-white">
+      <h1 className="font-[family-name:var(--font-beats-hero)] text-3xl font-semibold tracking-tight text-white">
         Admin sign-in
       </h1>
       <p className="mt-4 text-[#A1A1AA]">

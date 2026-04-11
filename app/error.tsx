@@ -15,7 +15,7 @@ export default function ErrorBoundary({
 
   return (
     <div className="flex min-h-[50vh] flex-col items-center justify-center gap-6 bg-[#050505] px-6 py-16">
-      <h1 className="font-[family-name:var(--font-space-grotesk)] text-2xl font-bold text-white">
+      <h1 className="font-[family-name:var(--font-beats-hero)] text-2xl font-semibold tracking-tight text-white">
         Something went wrong
       </h1>
       <p className="max-w-md text-center text-sm text-[#A1A1AA]">

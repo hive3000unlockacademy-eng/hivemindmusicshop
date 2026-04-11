@@ -4,7 +4,9 @@ export default function AdminHomePage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold text-white">Dashboard</h1>
+        <h1 className="font-[family-name:var(--font-beats-hero)] text-2xl font-semibold tracking-tight text-white">
+          Dashboard
+        </h1>
         <p className="mt-2 max-w-xl text-[#A1A1AA]">
           Admin sign-in and order/contact lists were backed by Supabase. With no
           database connected, this page is a static placeholder. Re-add Supabase

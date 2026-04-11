@@ -26,13 +26,6 @@ export function SiteHeader() {
         </nav>
         <div className="flex items-center gap-3">
           <Link
-            href="/beats"
-            className="hidden text-sm text-[#A1A1AA] hover:text-white sm:inline"
-            aria-label="Search beats"
-          >
-            Search
-          </Link>
-          <Link
             href="/cart"
             className="rounded-md border border-white/15 px-3 py-1.5 text-sm font-medium text-white transition hover:border-[#002400]/50"
           >

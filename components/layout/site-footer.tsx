@@ -14,11 +14,11 @@ export function SiteFooter() {
       <Container>
         <div className="flex flex-col gap-10 lg:flex-row lg:justify-between">
           <div className="max-w-md">
-            <p className="font-[family-name:var(--font-space-grotesk)] text-lg font-semibold text-white">
+            <p className="font-[family-name:var(--font-beats-hero)] text-lg font-semibold tracking-tight text-white">
               HiveMind Productions
             </p>
             <p className="mt-2 text-sm text-[#A1A1AA]">
-              HiveMindMusic.Shop — premium beats and licensing.
+              Premium beats and licensing.
             </p>
             <p className="mt-4 flex items-center gap-2 text-sm text-[#A1A1AA]">
               <a
@@ -61,7 +61,24 @@ export function SiteFooter() {
             ))}
           </nav>
         </div>
-        <div className="mt-12 space-y-3 border-t border-white/10 pt-8 text-xs text-[#A1A1AA]">
+        <div className="mt-12 space-y-4 border-t border-white/10 pt-8 text-center text-xs text-[#A1A1AA]">
+          <nav
+            className="flex flex-wrap justify-center gap-x-6 gap-y-2"
+            aria-label="Legal"
+          >
+            <Link
+              href="/privacy"
+              className="transition hover:text-white"
+            >
+              Privacy Policy
+            </Link>
+            <Link
+              href="/terms"
+              className="transition hover:text-white"
+            >
+              Terms of Service
+            </Link>
+          </nav>
           <p>© 2018 HiveMind Productions. All rights reserved.</p>
           <p>
             Powered by{" "}

@@ -51,7 +51,7 @@ export function BeatDetail({
             )}
           </div>
           <div>
-            <h1 className="font-[family-name:var(--font-space-grotesk)] text-4xl font-bold text-white lg:text-5xl">
+            <h1 className="font-[family-name:var(--font-beats-hero)] text-4xl font-semibold tracking-tight text-white lg:text-5xl">
               {beat.title}
             </h1>
             <p className="mt-4 text-[#A1A1AA]">

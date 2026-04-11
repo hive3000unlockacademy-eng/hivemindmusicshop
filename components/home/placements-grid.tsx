@@ -32,6 +32,27 @@ const sample: Placement[] = [
     tint: "from-[#1f2430] to-[#0f1118]",
     imageSrc: "/images/placements/placement-3.jpg",
   },
+  {
+    title: "Low Beam",
+    artist: "Artist Four",
+    role: "Producer, mixer",
+    tint: "from-[#1a2520] to-[#0c1210]",
+    imageSrc: "/images/placements/placement-1.jpg",
+  },
+  {
+    title: "Vault Keys",
+    artist: "Artist Five",
+    role: "Songwriter, producer",
+    tint: "from-[#25201a] to-[#15120c]",
+    imageSrc: "/images/placements/placement-2.jpg",
+  },
+  {
+    title: "East End",
+    artist: "Artist Six",
+    role: "Producer, engineer",
+    tint: "from-[#1a1f2a] to-[#0d1016]",
+    imageSrc: "/images/placements/placement-3.jpg",
+  },
 ];
 
 export function PlacementsGrid({ items = sample }: { items?: Placement[] }) {

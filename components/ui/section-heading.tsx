@@ -12,7 +12,7 @@ export function SectionHeading({
   return (
     <div className="mb-10 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
       <div>
-        <h2 className="font-[family-name:var(--font-space-grotesk)] text-3xl font-bold tracking-tight text-white sm:text-4xl">
+        <h2 className="font-[family-name:var(--font-beats-hero)] text-3xl font-semibold tracking-tight text-white sm:text-4xl">
           {title}
         </h2>
         {subtitle ? (

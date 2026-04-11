@@ -78,10 +78,12 @@ export function LicensingTierCards({
                   Popular
                 </p>
               ) : null}
-              <h3 className="font-[family-name:var(--font-space-grotesk)] text-lg font-bold text-white">
+              <h3 className="font-[family-name:var(--font-beats-hero)] text-lg font-semibold tracking-tight text-white">
                 {tier.name}
               </h3>
-              <p className="mt-2 text-3xl font-bold text-white">{tier.price}</p>
+              <p className="mt-2 font-[family-name:var(--font-beats-hero)] text-3xl font-semibold tracking-tight text-white">
+                {tier.price}
+              </p>
               <ul className="mt-4 flex-1 space-y-2 text-sm text-[#A1A1AA]">
                 {tier.features.map((f) => (
                   <li key={f} className="flex gap-2">

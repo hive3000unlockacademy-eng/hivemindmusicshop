@@ -17,7 +17,7 @@ export default async function CartPage() {
   return (
     <div className="py-16">
       <Container>
-        <h1 className="text-center font-[family-name:var(--font-space-grotesk)] text-4xl font-bold text-white">
+        <h1 className="text-center font-[family-name:var(--font-beats-hero)] text-4xl font-semibold tracking-tight text-white">
           Cart
         </h1>
         <div className="mx-auto mt-6 max-w-xl text-center">

@@ -33,7 +33,7 @@ export default async function HomePage() {
         <Container>
           <div className="grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-12">
             <div>
-              <h2 className="font-[family-name:var(--font-space-grotesk)] text-2xl font-bold text-white sm:text-3xl">
+              <h2 className="font-[family-name:var(--font-beats-hero)] text-2xl font-semibold tracking-tight text-white sm:text-3xl">
                 The HiveMind sound
               </h2>
               <p className="mt-4 max-w-3xl leading-relaxed text-[#A1A1AA]">

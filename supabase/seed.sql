@@ -1,9 +1,9 @@
 insert into public.license_tiers (slug, name, description, price_cents, sort_order, is_highlighted)
 values
-  ('basic', 'Basic', 'MP3, distribution limits per license agreement.', 5999, 1, false),
-  ('premium', 'Premium', 'MP3 + WAV, higher caps.', 9999, 2, true),
-  ('premium-trackouts', 'Premium + Trackouts', 'WAV + stems / trackouts.', 17999, 3, false),
-  ('exclusive', 'Exclusive', 'Exclusive purchase; terms finalized at sale.', 200000, 4, false)
+  ('basic', 'Basic', 'MP3, distribution limits per license agreement.', 4999, 1, false),
+  ('premium', 'Premium', 'MP3 + WAV, higher caps.', 6999, 2, true),
+  ('premium-trackouts', 'Premium + Trackouts', 'WAV + stems / trackouts.', 14999, 3, false),
+  ('exclusive', 'Exclusive', 'Exclusive purchase; terms finalized at sale.', 100000, 4, false)
 on conflict (slug) do update set
   name = excluded.name,
   description = excluded.description,

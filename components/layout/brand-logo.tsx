@@ -17,7 +17,7 @@ export function BrandLogo({ className = "" }: { className?: string }) {
           priority
         />
       </span>
-      <span className="font-[family-name:var(--font-space-grotesk)] text-xl font-bold tracking-tight text-white sm:text-2xl">
+      <span className="font-[family-name:var(--font-beats-hero)] text-xl font-semibold tracking-tight text-white sm:text-2xl">
         HiveMind
       </span>
     </Link>

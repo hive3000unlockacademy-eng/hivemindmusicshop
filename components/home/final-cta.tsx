@@ -25,7 +25,7 @@ export function FinalCta() {
             aria-hidden
           />
           <div className="relative z-10 p-10 text-center sm:p-14">
-            <h2 className="font-[family-name:var(--font-space-grotesk)] text-3xl font-bold text-white sm:text-4xl">
+            <h2 className="font-[family-name:var(--font-beats-hero)] text-3xl font-semibold tracking-tight text-white sm:text-4xl">
               Ready to build?
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-[#A1A1AA]">
