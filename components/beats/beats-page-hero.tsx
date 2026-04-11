@@ -8,13 +8,18 @@ const btnCta =
 type Props = {
   /** Default: `public/beats hero.png` */
   imageSrc?: string;
+  /** Primary CTA target. Use `/beats#catalog` when this hero is shown on a page without `#catalog`. */
+  browseHref?: string;
 };
 
 /**
  * Full-bleed 16:9 beats catalog hero: artwork weighted right in the image;
  * left gradient keeps headline + CTA readable (no fake UI overlays).
  */
-export function BeatsPageHero({ imageSrc = "/beats%20hero.png" }: Props) {
+export function BeatsPageHero({
+  imageSrc = "/beats%20hero.png",
+  browseHref = "#catalog",
+}: Props) {
   return (
     <section className="relative isolate w-full overflow-hidden bg-[#050505]">
       <div className="relative h-[calc(100vw*9/16-1in)] min-h-[200px] w-full overflow-hidden">
@@ -53,7 +58,7 @@ export function BeatsPageHero({ imageSrc = "/beats%20hero.png" }: Props) {
               Unlock beats that stand out from the rest.
             </p>
             <div className="mt-8 sm:mt-10">
-              <Link href="#catalog" className={btnCta}>
+              <Link href={browseHref} className={btnCta}>
                 Browse beats
               </Link>
             </div>

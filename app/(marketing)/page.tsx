@@ -1,32 +1,20 @@
 import Image from "next/image";
+import { BeatsPageHero } from "@/components/beats/beats-page-hero";
 import { FinalCta } from "@/components/home/final-cta";
-import { HeroFeaturedBeat } from "@/components/home/hero-featured-beat";
 import { LicensingTierCards } from "@/components/home/licensing-tier-cards";
 import { PlacementsGrid } from "@/components/home/placements-grid";
 import { Container } from "@/components/ui/container";
-import { getBeats, getFeaturedBeat } from "@/lib/data/beats";
 import { getLicenseTiers } from "@/lib/data/license-tiers";
 import { mapLicenseTierRow } from "@/lib/mappers/beats";
 
 export default async function HomePage() {
-  const [beats, featured, tiers] = await Promise.all([
-    getBeats(),
-    getFeaturedBeat(),
-    getLicenseTiers(),
-  ]);
+  const tiers = await getLicenseTiers();
 
-  const hero = featured ?? beats[0];
   const tierCards = tiers.length ? tiers.map(mapLicenseTierRow) : undefined;
 
   return (
     <>
-      <HeroFeaturedBeat
-        artworkSrc="/blackwhite hero image.png"
-        featuredSlug={hero?.slug ?? "midnight-run"}
-        featuredTitle={hero?.title ?? "Midnight Run"}
-        featuredBpm={hero?.bpm ?? 140}
-        featuredGenre={hero?.genre ?? "Dark Trap"}
-      />
+      <BeatsPageHero browseHref="/beats#catalog" />
       <LicensingTierCards tiers={tierCards} />
       <PlacementsGrid />
       <section className="py-16">
