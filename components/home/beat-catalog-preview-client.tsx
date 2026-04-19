@@ -83,7 +83,7 @@ export function BeatCatalogPreviewClient({ beats }: { beats: PreviewBeat[] }) {
                         if (!url) return;
                         play({ slug: b.slug, title: b.title, previewUrl: url });
                       }}
-                      className="inline-flex rounded-md bg-[#016b28] px-3 py-1.5 text-xs font-semibold text-white shadow-[0_0_12px_rgba(1,107,40,0.2)] transition hover:bg-[#1f9d55] disabled:cursor-not-allowed disabled:opacity-40"
+                      className="inline-flex rounded-md bg-[#016b28] px-3 py-1.5 text-xs font-semibold text-white shadow-[0_0_12px_rgba(1,107,40,0.2)] transition-shadow duration-200 hover:shadow-[0_0_24px_rgba(1,107,40,0.55),0_0_48px_rgba(1,107,40,0.22)] disabled:cursor-not-allowed disabled:opacity-40"
                     >
                       {active && isPlaying ? "Playing" : "Preview"}
                     </button>
@@ -159,7 +159,7 @@ export function BeatCatalogPreviewClient({ beats }: { beats: PreviewBeat[] }) {
                         if (!url) return;
                         play({ slug: b.slug, title: b.title, previewUrl: url });
                       }}
-                      className="inline-flex rounded-md bg-[#016b28] px-3 py-1 text-xs font-semibold text-white shadow-[0_0_12px_rgba(1,107,40,0.2)] transition hover:bg-[#1f9d55] disabled:cursor-not-allowed disabled:opacity-40"
+                      className="inline-flex rounded-md bg-[#016b28] px-3 py-1 text-xs font-semibold text-white shadow-[0_0_12px_rgba(1,107,40,0.2)] transition-shadow duration-200 hover:shadow-[0_0_24px_rgba(1,107,40,0.55),0_0_48px_rgba(1,107,40,0.22)] disabled:cursor-not-allowed disabled:opacity-40"
                     >
                       {active && isPlaying ? "Playing" : "Preview"}
                     </button>

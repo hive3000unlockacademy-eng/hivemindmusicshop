@@ -12,7 +12,7 @@ type Props = {
 };
 
 const btnPrimary =
-  "inline-flex items-center justify-center rounded-md bg-[#016b28] px-6 py-3 text-sm font-semibold text-white shadow-[0_4px_24px_rgba(1,107,40,0.28)] transition hover:bg-[#1f9d55] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#016b28]";
+  "inline-flex items-center justify-center rounded-md bg-[#016b28] px-6 py-3 text-sm font-semibold text-white shadow-[0_4px_24px_rgba(1,107,40,0.28),0_0_28px_rgba(1,107,40,0.35)] transition-shadow duration-200 hover:shadow-[0_4px_28px_rgba(1,107,40,0.4),0_0_48px_rgba(1,107,40,0.55),0_0_88px_rgba(1,107,40,0.22)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#016b28]";
 const btnSecondary =
   "inline-flex items-center justify-center rounded-md border border-white/20 bg-black/30 px-6 py-3 text-sm font-semibold text-white backdrop-blur-sm transition hover:border-[#002400]/50 hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#002400]";
 

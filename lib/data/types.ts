@@ -35,6 +35,8 @@ export type VideoRow = {
   id: string;
   title: string;
   artist: string | null;
+  /** ISO `YYYY-MM-DD` — shown next to artist on tiles (upload / publish date). */
+  published_at: string | null;
   thumbnail_path: string | null;
   embed_url: string;
   /** Page section on `/videos` (see `VIDEO_PAGE_SECTIONS`). */

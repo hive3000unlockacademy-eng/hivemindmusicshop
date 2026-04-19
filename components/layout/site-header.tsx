@@ -13,9 +13,9 @@ const nav = [
 ];
 
 const linkClass =
-  "text-sm font-medium text-[#A1A1AA] transition hover:text-[#016b28]";
+  "text-sm font-medium text-[#016b28] transition hover:text-[#1f9d55]";
 const mobileLinkClass =
-  "border-b border-white/5 py-3 text-base font-medium text-[#C8C8C8] transition last:border-b-0 hover:text-[#016b28]";
+  "border-b border-white/5 py-3 text-base font-medium text-[#016b28] transition last:border-b-0 hover:text-[#1f9d55]";
 
 export function SiteHeader() {
   const pathname = usePathname();
@@ -44,7 +44,7 @@ export function SiteHeader() {
   }, [menuOpen]);
 
   return (
-    <header className="relative sticky top-0 z-50 border-b border-white/10 bg-[#050505]/90 backdrop-blur-md">
+    <header className="relative z-50 border-b border-white/10 bg-[#050505]/90 backdrop-blur-md">
       <Container className="flex h-16 items-center justify-between gap-4 sm:h-[4.25rem]">
         <BrandLogo />
         <nav className="hidden items-center gap-8 md:flex" aria-label="Main">

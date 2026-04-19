@@ -1,3 +1,4 @@
+import { SpotifyEmbedIframe } from "@/components/home/spotify-embed-iframe";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
 import type { EnrichedPlacement } from "@/lib/spotify-embed";
@@ -17,16 +18,9 @@ export function PlacementsGrid({ items }: { items: EnrichedPlacement[] }) {
               className={`flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br ${p.tint} shadow-lg transition hover:border-[#002400]/35`}
             >
               {p.embedSrc ? (
-                <iframe
+                <SpotifyEmbedIframe
                   title={`Spotify embed (${p.id})`}
-                  src={p.embedSrc}
-                  width="100%"
-                  height={152}
-                  className="w-full shrink-0 border-0 bg-black"
-                  style={{ borderRadius: 12 }}
-                  loading="lazy"
-                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                  referrerPolicy="strict-origin-when-cross-origin"
+                  embedSrc={p.embedSrc}
                 />
               ) : null}
             </article>

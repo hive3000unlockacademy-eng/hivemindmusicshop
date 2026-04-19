@@ -6,14 +6,14 @@ export const VIDEO_PAGE_SECTIONS = [
     emptyMessage: "Music videos will appear here.",
   },
   {
+    slug: "instrumentals",
+    title: "Instrumental Albums",
+    emptyMessage: "Instrumental performances and playthroughs will appear here.",
+  },
+  {
     slug: "podcasts",
     title: "Podcasts",
     emptyMessage: "Podcast episodes will appear here.",
-  },
-  {
-    slug: "instrumentals",
-    title: "Instrumentals",
-    emptyMessage: "Instrumental performances and playthroughs will appear here.",
   },
   {
     slug: "behind-the-scenes",

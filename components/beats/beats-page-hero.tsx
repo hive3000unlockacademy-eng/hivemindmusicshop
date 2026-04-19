@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Container } from "@/components/ui/container";
 
 const btnCta =
-  "inline-flex items-center justify-center rounded-md bg-[#016b28] px-6 py-3 text-sm font-semibold text-white shadow-[0_0_28px_rgba(1,107,40,0.35)] transition hover:bg-[#1f9d55] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#016b28]";
+  "inline-flex items-center justify-center rounded-md bg-[#016b28] px-6 py-3 text-sm font-semibold text-white shadow-[0_0_28px_rgba(1,107,40,0.35)] transition-shadow duration-200 hover:shadow-[0_0_44px_rgba(1,107,40,0.55),0_0_88px_rgba(1,107,40,0.28)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#016b28]";
 
 /** `public/beats hero.png` — shared with other sections that reuse the beats hero artwork. */
 export const BEATS_PAGE_HERO_IMAGE = "/beats%20hero.png";

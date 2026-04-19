@@ -149,7 +149,7 @@ export function BeatCatalogPreview({
             action={
               <Link
                 href="/beats"
-                className="inline-flex items-center justify-center rounded-md bg-[#016b28] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[#1f9d55] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#016b28]"
+                className="inline-flex items-center justify-center rounded-md bg-[#016b28] px-5 py-2.5 text-sm font-semibold text-white shadow-[0_0_20px_rgba(1,107,40,0.28)] transition-shadow duration-200 hover:shadow-[0_0_40px_rgba(1,107,40,0.55),0_0_72px_rgba(1,107,40,0.2)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#016b28]"
               >
                 View all beats
               </Link>

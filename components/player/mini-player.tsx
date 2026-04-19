@@ -33,7 +33,7 @@ export function MiniPlayer() {
           <button
             type="button"
             onClick={toggle}
-            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[#016b28]/50 bg-[#016b28]/15 text-[#016b28] transition hover:bg-[#016b28]/25"
+            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[#016b28]/50 bg-[#016b28]/15 text-[#016b28] shadow-[0_0_16px_rgba(1,107,40,0.22)] transition-shadow duration-200 hover:shadow-[0_0_32px_rgba(1,107,40,0.45),0_0_52px_rgba(1,107,40,0.18)]"
             aria-label={isPlaying ? "Pause" : "Play"}
           >
             {isPlaying ? "❚❚" : "▶"}

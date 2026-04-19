@@ -36,7 +36,7 @@ export function BeatDetailPlayer({
               play({ slug, title, previewUrl });
             }
           }}
-          className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full border-2 border-[#016b28] bg-[#016b28]/15 text-[#016b28] shadow-[0_0_24px_rgba(1,107,40,0.28)] transition hover:bg-[#016b28]/25"
+          className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full border-2 border-[#016b28] bg-[#016b28]/15 text-[#016b28] shadow-[0_0_24px_rgba(1,107,40,0.28)] transition-shadow duration-200 hover:shadow-[0_0_40px_rgba(1,107,40,0.45),0_0_64px_rgba(1,107,40,0.2)]"
           aria-label={active && isPlaying ? "Pause preview" : "Play preview"}
         >
           {active && isPlaying ? "❚❚" : "▶"}

@@ -3,16 +3,20 @@
 import Image from "next/image";
 import { useMemo, useState } from "react";
 import type { VideoRow } from "@/lib/data/videos";
+import { formatPublishedDate } from "@/lib/format";
 import { videoThumbnailUrl } from "@/lib/video/thumbnail";
 import { VideoModal } from "@/components/videos/video-modal";
 
 export function VideoGridClient({
   videos,
   className,
+  /** When false, hides the artist / date line under the title (e.g. Artist Music Videos). */
+  showArtistMeta = true,
 }: {
   videos: VideoRow[];
   /** Merged onto the grid wrapper (default spacing for section layouts). */
   className?: string;
+  showArtistMeta?: boolean;
 }) {
   const [active, setActive] = useState<VideoRow | null>(null);
 
@@ -28,6 +32,11 @@ export function VideoGridClient({
       >
         {sorted.map((v) => {
           const thumb = videoThumbnailUrl(v.embed_url, v.thumbnail_path);
+          const artistMeta = showArtistMeta
+            ? [v.artist, formatPublishedDate(v.published_at)]
+                .filter(Boolean)
+                .join(" · ")
+            : "";
           return (
             <button
               key={v.id}
@@ -53,9 +62,9 @@ export function VideoGridClient({
                 <p className="line-clamp-2 text-sm font-semibold text-white">
                   {v.title}
                 </p>
-                {v.artist ? (
-                  <p className="mt-1 line-clamp-1 text-xs text-[#A1A1AA]">
-                    {v.artist}
+                {artistMeta ? (
+                  <p className="mt-1 line-clamp-2 text-xs text-[#A1A1AA]">
+                    {artistMeta}
                   </p>
                 ) : null}
               </div>

@@ -54,7 +54,7 @@ export function SiteFooter() {
               <Link
                 key={l.href}
                 href={l.href}
-                className="text-sm text-[#A1A1AA] hover:text-white"
+                className="text-sm text-[#016b28] transition hover:text-[#1f9d55]"
               >
                 {l.label}
               </Link>
@@ -79,7 +79,7 @@ export function SiteFooter() {
               Terms of Service
             </Link>
           </nav>
-          <p>© 2018 HiveMind Productions. All rights reserved.</p>
+          <p>© 2016 HiveMind Productions. All rights reserved.</p>
           <p>
             Powered by{" "}
             <a

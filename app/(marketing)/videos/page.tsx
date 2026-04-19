@@ -16,13 +16,15 @@ export default async function VideosPage() {
   return (
     <div className="py-16">
       <Container>
-        <h1 className="font-[family-name:var(--font-beats-hero)] text-4xl font-semibold tracking-tight text-white">
-          Videos
-        </h1>
-        <p className="mt-4 max-w-2xl text-[#A1A1AA]">
-          Artist videos, podcasts, and more—organized by category. Tap a tile to
-          play.
-        </p>
+        <div className="text-center">
+          <h1 className="font-[family-name:var(--font-beats-hero)] text-4xl font-semibold tracking-tight text-white">
+            Videos
+          </h1>
+          <p className="mx-auto mt-4 max-w-2xl text-[#A1A1AA]">
+            Artist videos, podcasts, and more—organized by category. Tap a tile to
+            play.
+          </p>
+        </div>
         <div className="mt-12 space-y-14">
           {VIDEO_PAGE_SECTIONS.map((section) => {
             const list = bySection.get(section.slug) ?? [];
@@ -42,7 +44,10 @@ export default async function VideosPage() {
                     {section.emptyMessage}
                   </p>
                 ) : (
-                  <VideoGridClient videos={list} />
+                  <VideoGridClient
+                    videos={list}
+                    showArtistMeta={section.slug !== "artist-music-videos"}
+                  />
                 )}
               </section>
             );

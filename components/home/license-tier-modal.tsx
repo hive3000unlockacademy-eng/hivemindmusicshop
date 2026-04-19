@@ -69,7 +69,7 @@ export function LicenseTierModal({
           <button
             type="button"
             onClick={onClose}
-            className="mt-6 w-full rounded-md bg-[#016b28] px-4 py-2.5 text-sm font-semibold text-white hover:bg-[#1f9d55]"
+            className="mt-6 w-full rounded-md bg-[#016b28] px-4 py-2.5 text-sm font-semibold text-white shadow-[0_0_20px_rgba(1,107,40,0.28)] transition-shadow duration-200 hover:shadow-[0_0_40px_rgba(1,107,40,0.55),0_0_72px_rgba(1,107,40,0.2)]"
           >
             Close
           </button>
@@ -120,7 +120,7 @@ export function LicenseTierModal({
             ref={closeRef}
             type="button"
             onClick={onClose}
-            className="w-full rounded-md bg-[#016b28] px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-[#1f9d55] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#016b28] sm:w-auto"
+            className="w-full rounded-md bg-[#016b28] px-4 py-2.5 text-sm font-semibold text-white shadow-[0_0_20px_rgba(1,107,40,0.28)] transition-shadow duration-200 hover:shadow-[0_0_40px_rgba(1,107,40,0.55),0_0_72px_rgba(1,107,40,0.2)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#016b28] sm:w-auto"
           >
             Close
           </button>

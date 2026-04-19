@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import type { VideoRow } from "@/lib/data/videos";
+import { formatPublishedDate } from "@/lib/format";
 
 export function VideoModal({
   video,
@@ -10,6 +11,10 @@ export function VideoModal({
   video: VideoRow;
   onClose: () => void;
 }) {
+  const subtitle = [video.artist, formatPublishedDate(video.published_at)]
+    .filter(Boolean)
+    .join(" · ");
+
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
@@ -40,8 +45,8 @@ export function VideoModal({
             >
               {video.title}
             </h2>
-            {video.artist ? (
-              <p className="text-sm text-[#A1A1AA]">{video.artist}</p>
+            {subtitle ? (
+              <p className="text-sm text-[#A1A1AA]">{subtitle}</p>
             ) : null}
           </div>
           <button
@@ -57,7 +62,8 @@ export function VideoModal({
             title={video.title}
             src={video.embed_url}
             className="absolute inset-0 h-full w-full"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
             allowFullScreen
           />
         </div>

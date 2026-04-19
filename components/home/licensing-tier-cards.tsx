@@ -110,7 +110,7 @@ export function LicensingTierCards({
               <button
                 type="button"
                 onClick={() => setOpenSlug(tier.slug)}
-                className="mt-6 inline-flex justify-center rounded-md bg-[#016b28] px-4 py-2.5 text-center text-sm font-semibold text-white transition hover:bg-[#1f9d55] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#016b28]"
+                className="mt-6 inline-flex justify-center rounded-md bg-[#016b28] px-4 py-2.5 text-center text-sm font-semibold text-white shadow-[0_0_20px_rgba(1,107,40,0.28)] transition-shadow duration-200 hover:shadow-[0_0_40px_rgba(1,107,40,0.55),0_0_72px_rgba(1,107,40,0.2)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#016b28]"
               >
                 Read license
               </button>
