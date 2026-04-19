@@ -37,6 +37,8 @@ export type VideoRow = {
   artist: string | null;
   thumbnail_path: string | null;
   embed_url: string;
+  /** Page section on `/videos` (see `VIDEO_PAGE_SECTIONS`). */
+  section_slug: string;
   category: string | null;
   tags: string[] | null;
   is_featured: boolean;

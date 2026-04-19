@@ -6,7 +6,14 @@ import type { VideoRow } from "@/lib/data/videos";
 import { videoThumbnailUrl } from "@/lib/video/thumbnail";
 import { VideoModal } from "@/components/videos/video-modal";
 
-export function VideoGridClient({ videos }: { videos: VideoRow[] }) {
+export function VideoGridClient({
+  videos,
+  className,
+}: {
+  videos: VideoRow[];
+  /** Merged onto the grid wrapper (default spacing for section layouts). */
+  className?: string;
+}) {
   const [active, setActive] = useState<VideoRow | null>(null);
 
   const sorted = useMemo(
@@ -16,7 +23,9 @@ export function VideoGridClient({ videos }: { videos: VideoRow[] }) {
 
   return (
     <>
-      <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div
+        className={`mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 ${className ?? ""}`}
+      >
         {sorted.map((v) => {
           const thumb = videoThumbnailUrl(v.embed_url, v.thumbnail_path);
           return (
