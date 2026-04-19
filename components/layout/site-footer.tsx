@@ -83,7 +83,7 @@ export function SiteFooter() {
           <p>
             Powered by{" "}
             <a
-              href="https://www.nebuladigital.com"
+              href="https://www.nebuladigital.net"
               className="text-[#016b28] underline-offset-2 transition hover:text-[#1f9d55] hover:underline"
               target="_blank"
               rel="noopener noreferrer"

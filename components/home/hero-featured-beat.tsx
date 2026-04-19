@@ -65,8 +65,8 @@ export function HeroFeaturedBeat({
           </p>
 
           <div className="mt-10 flex flex-wrap items-center gap-4">
-            <Link href="/beats" className={btnPrimary}>
-              Shop beats
+            <Link href="/cart" className={btnPrimary}>
+              View Cart
             </Link>
             <Link href="/#licensing" className={btnSecondary}>
               See licenses

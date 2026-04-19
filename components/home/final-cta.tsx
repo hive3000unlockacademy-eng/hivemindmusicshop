@@ -21,7 +21,7 @@ export function FinalCta() {
             priority={false}
           />
           <div
-            className="absolute inset-0 bg-gradient-to-br from-[#050505]/92 via-[#050505]/85 to-[#0A0A0A]/90"
+            className="absolute inset-0 bg-gradient-to-br from-[#050505]/82 via-[#050505]/75 to-[#0A0A0A]/80"
             aria-hidden
           />
           <div className="relative z-10 p-10 text-center sm:p-14">

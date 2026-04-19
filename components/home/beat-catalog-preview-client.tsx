@@ -2,8 +2,12 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { addToCartAction } from "@/app/actions/cart";
 import { useAudio } from "@/components/player/audio-context";
 import type { PreviewBeat } from "@/components/home/beat-catalog-preview";
+
+/** Matches default entry-tier slug in `lib/catalog/static-data` / cart resolver. */
+const DEFAULT_CART_TIER_SLUG = "basic";
 
 export function BeatCatalogPreviewClient({ beats }: { beats: PreviewBeat[] }) {
   const { current, isPlaying, play } = useAudio();
@@ -21,7 +25,8 @@ export function BeatCatalogPreviewClient({ beats }: { beats: PreviewBeat[] }) {
               <th className="px-4 py-3 font-medium">Time</th>
               <th className="px-4 py-3 font-medium">BPM</th>
               <th className="px-4 py-3 font-medium">Tags</th>
-              <th className="px-4 py-3 text-right font-medium"> </th>
+              <th className="px-4 py-3 text-right font-medium">Preview</th>
+              <th className="px-4 py-3 text-right font-medium">Cart</th>
             </tr>
           </thead>
           <tbody>
@@ -78,14 +83,27 @@ export function BeatCatalogPreviewClient({ beats }: { beats: PreviewBeat[] }) {
                         if (!url) return;
                         play({ slug: b.slug, title: b.title, previewUrl: url });
                       }}
-                      className={`inline-flex rounded-md px-3 py-1.5 text-xs font-semibold transition ${
-                        active && isPlaying
-                          ? "bg-[#016b28] text-white"
-                          : "bg-[#016b28]/15 text-[#016b28] hover:bg-[#016b28]/25"
-                      } disabled:cursor-not-allowed disabled:opacity-40`}
+                      className="inline-flex rounded-md bg-[#016b28] px-3 py-1.5 text-xs font-semibold text-white shadow-[0_0_12px_rgba(1,107,40,0.2)] transition hover:bg-[#1f9d55] disabled:cursor-not-allowed disabled:opacity-40"
                     >
                       {active && isPlaying ? "Playing" : "Preview"}
                     </button>
+                  </td>
+                  <td className="px-4 py-4 text-right align-middle">
+                    <form action={addToCartAction} className="inline">
+                      <input type="hidden" name="beat_slug" value={b.slug} />
+                      <input
+                        type="hidden"
+                        name="license_tier_slug"
+                        value={DEFAULT_CART_TIER_SLUG}
+                      />
+                      <button
+                        type="submit"
+                        className="inline-flex rounded-md border border-white/15 bg-[#0A0A0A] px-3 py-1.5 text-xs font-semibold text-white transition hover:border-[#016b28]/50 hover:bg-[#111]"
+                        aria-label={`Add ${b.title} to cart`}
+                      >
+                        Add to cart
+                      </button>
+                    </form>
                   </td>
                 </tr>
               );
@@ -133,17 +151,34 @@ export function BeatCatalogPreviewClient({ beats }: { beats: PreviewBeat[] }) {
                       {t}
                     </span>
                   ))}
-                  <button
-                    type="button"
-                    disabled={!url}
-                    onClick={() => {
-                      if (!url) return;
-                      play({ slug: b.slug, title: b.title, previewUrl: url });
-                    }}
-                    className="ml-auto rounded-md bg-[#016b28]/15 px-3 py-1 text-xs font-semibold text-[#016b28] disabled:opacity-40"
-                  >
-                    {active && isPlaying ? "Playing" : "Preview"}
-                  </button>
+                  <div className="ml-auto flex shrink-0 flex-wrap items-center justify-end gap-2">
+                    <button
+                      type="button"
+                      disabled={!url}
+                      onClick={() => {
+                        if (!url) return;
+                        play({ slug: b.slug, title: b.title, previewUrl: url });
+                      }}
+                      className="inline-flex rounded-md bg-[#016b28] px-3 py-1 text-xs font-semibold text-white shadow-[0_0_12px_rgba(1,107,40,0.2)] transition hover:bg-[#1f9d55] disabled:cursor-not-allowed disabled:opacity-40"
+                    >
+                      {active && isPlaying ? "Playing" : "Preview"}
+                    </button>
+                    <form action={addToCartAction} className="inline">
+                      <input type="hidden" name="beat_slug" value={b.slug} />
+                      <input
+                        type="hidden"
+                        name="license_tier_slug"
+                        value={DEFAULT_CART_TIER_SLUG}
+                      />
+                      <button
+                        type="submit"
+                        className="inline-flex rounded-md border border-white/15 bg-[#0A0A0A] px-3 py-1 text-xs font-semibold text-white transition hover:border-[#016b28]/50 hover:bg-[#111]"
+                        aria-label={`Add ${b.title} to cart`}
+                      >
+                        Add to cart
+                      </button>
+                    </form>
+                  </div>
                 </div>
               </div>
             </div>

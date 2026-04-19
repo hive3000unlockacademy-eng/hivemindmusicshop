@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { ContactForm } from "@/components/contact/contact-form";
 import { Container } from "@/components/ui/container";
+import contactPhoto from "../../../public/contact.jpg";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -13,7 +14,7 @@ export default function ContactPage() {
   return (
     <div className="py-16">
       <Container>
-        <div className="grid gap-10 lg:grid-cols-2 lg:items-stretch lg:gap-12">
+        <div className="grid gap-10 lg:grid-cols-2 lg:items-start lg:gap-12">
           <div className="order-2 flex min-h-0 flex-col lg:order-1">
             <h1 className="font-[family-name:var(--font-beats-hero)] text-4xl font-semibold tracking-tight text-white">
               Contact
@@ -32,14 +33,14 @@ export default function ContactPage() {
             </p>
             <ContactForm />
           </div>
-          <div className="relative order-1 aspect-[4/3] min-h-0 w-full overflow-hidden rounded-2xl border border-white/10 lg:order-2 lg:aspect-auto lg:h-full">
+          <div className="order-1 w-full lg:order-2">
             <Image
-              src="/images/site/contact-studio.jpg"
-              alt=""
-              fill
-              className="object-cover"
+              src={contactPhoto}
+              alt="HiveMind Productions"
+              className="h-auto w-full rounded-2xl border border-white/10"
               sizes="(max-width: 1024px) 100vw, 50vw"
               priority={false}
+              placeholder="blur"
             />
           </div>
         </div>

@@ -48,7 +48,9 @@ export function BeatDetailPlayer({
               style={{ width: active ? `${pct}%` : "0%" }}
             />
           </div>
-          <p className="mt-2 text-xs text-[#A1A1AA]">Preview — not for commercial use</p>
+          <p className="mt-2 text-xs text-[#A1A1AA]">
+            <span className="font-semibold text-[#016b28]">Preview</span> — not for commercial use
+          </p>
         </div>
       </div>
     </div>

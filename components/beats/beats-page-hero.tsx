@@ -5,8 +5,11 @@ import { Container } from "@/components/ui/container";
 const btnCta =
   "inline-flex items-center justify-center rounded-md bg-[#016b28] px-6 py-3 text-sm font-semibold text-white shadow-[0_0_28px_rgba(1,107,40,0.35)] transition hover:bg-[#1f9d55] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#016b28]";
 
+/** `public/beats hero.png` — shared with other sections that reuse the beats hero artwork. */
+export const BEATS_PAGE_HERO_IMAGE = "/beats%20hero.png";
+
 type Props = {
-  /** Default: `public/beats hero.png` */
+  /** Default: {@link BEATS_PAGE_HERO_IMAGE} */
   imageSrc?: string;
   /** Primary CTA target. Use `/beats#catalog` when this hero is shown on a page without `#catalog`. */
   browseHref?: string;
@@ -17,12 +20,12 @@ type Props = {
  * left gradient keeps headline + CTA readable (no fake UI overlays).
  */
 export function BeatsPageHero({
-  imageSrc = "/beats%20hero.png",
+  imageSrc = BEATS_PAGE_HERO_IMAGE,
   browseHref = "#catalog",
 }: Props) {
   return (
     <section className="relative isolate w-full overflow-hidden bg-[#050505]">
-      <div className="relative h-[calc(100vw*9/16-1in)] min-h-[200px] w-full overflow-hidden">
+      <div className="relative aspect-video w-full min-h-[200px] overflow-hidden">
         <Image
           src={imageSrc}
           alt=""
@@ -40,7 +43,7 @@ export function BeatsPageHero({
           aria-hidden
         />
         <div
-          className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-[#050505]/35"
+          className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-[#050505]/15"
           aria-hidden
         />
 

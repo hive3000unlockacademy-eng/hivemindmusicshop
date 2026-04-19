@@ -23,7 +23,11 @@ export function MiniPlayer() {
       <div className="mx-auto flex max-w-6xl flex-col gap-2 sm:flex-row sm:items-center sm:gap-6">
         <div className="min-w-0 flex-1">
           <p className="truncate text-sm font-medium text-white">{current.title}</p>
-          <p className="truncate text-xs text-[#A1A1AA]">Preview</p>
+          <p className="truncate text-xs">
+            <span className="inline-flex rounded-md bg-[#016b28] px-1.5 py-0.5 font-semibold text-white shadow-[0_0_8px_rgba(1,107,40,0.25)]">
+              Preview
+            </span>
+          </p>
         </div>
         <div className="flex items-center gap-3 sm:w-80">
           <button

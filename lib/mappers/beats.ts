@@ -35,6 +35,7 @@ function rightsToFeatures(rights: unknown, fallback: string | null): string[] {
 export function mapLicenseTierRow(row: LicenseTierRow): Tier {
   const features = rightsToFeatures(row.rights_json, row.description);
   return {
+    slug: row.slug,
     name: row.name,
     price: formatUsd(row.price_cents),
     highlight: row.is_highlighted,

@@ -1,9 +1,15 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
+import { LicenseTierModal } from "@/components/home/license-tier-modal";
 import { Card } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
 
 export type Tier = {
+  /** Matches `license_tiers.slug` / keys in `LICENSE_TIER_COPY` */
+  slug: string;
   name: string;
   price: string;
   highlight?: boolean;
@@ -12,6 +18,7 @@ export type Tier = {
 
 const defaultTiers: Tier[] = [
   {
+    slug: "basic",
     name: "Basic",
     price: "$59.99",
     features: [
@@ -21,17 +28,20 @@ const defaultTiers: Tier[] = [
     ],
   },
   {
+    slug: "premium",
     name: "Premium",
     price: "$99.99",
     highlight: true,
     features: ["MP3 + WAV", "Higher distribution & stream caps", "Tag in intro"],
   },
   {
+    slug: "premium-trackouts",
     name: "Premium + Trackouts",
     price: "$179.99",
     features: ["Full trackouts / stems", "Expanded limits", "WAV + stems package"],
   },
   {
+    slug: "exclusive",
     name: "Exclusive",
     price: "$2,000+",
     features: [
@@ -49,6 +59,11 @@ export function LicensingTierCards({
   tiers?: Tier[];
   showSectionHeading?: boolean;
 }) {
+  const [openSlug, setOpenSlug] = useState<string | null>(null);
+  const active = openSlug
+    ? tiers.find((t) => t.slug === openSlug) ?? null
+    : null;
+
   return (
     <section id="licensing" className="scroll-mt-24 py-20">
       <Container>
@@ -69,7 +84,7 @@ export function LicensingTierCards({
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {tiers.map((tier) => (
             <Card
-              key={tier.name}
+              key={tier.slug}
               glow={tier.highlight}
               className={`flex flex-col ${tier.highlight ? "scale-[1.02] border-[#016b28]/40 lg:-mt-2" : ""}`}
             >
@@ -92,16 +107,24 @@ export function LicensingTierCards({
                   </li>
                 ))}
               </ul>
-              <Link
-                href="/#licensing"
-                className="mt-6 inline-flex justify-center rounded-md bg-[#016b28] px-4 py-2.5 text-center text-sm font-semibold text-white transition hover:bg-[#1f9d55]"
+              <button
+                type="button"
+                onClick={() => setOpenSlug(tier.slug)}
+                className="mt-6 inline-flex justify-center rounded-md bg-[#016b28] px-4 py-2.5 text-center text-sm font-semibold text-white transition hover:bg-[#1f9d55] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#016b28]"
               >
                 Read license
-              </Link>
+              </button>
             </Card>
           ))}
         </div>
       </Container>
+
+      <LicenseTierModal
+        open={active !== null}
+        onClose={() => setOpenSlug(null)}
+        tierName={active?.name ?? ""}
+        licenseSlug={active?.slug ?? ""}
+      />
     </section>
   );
 }
