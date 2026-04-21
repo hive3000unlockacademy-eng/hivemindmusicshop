@@ -1,6 +1,7 @@
 import type { CartLine } from "@/lib/cart/types";
-import { STATIC_BEATS, STATIC_LICENSE_TIERS } from "@/lib/catalog/static-data";
 import { formatUsd } from "@/lib/format";
+import { getBeatBySlug } from "@/lib/data/beats";
+import { getBeatLicenseOptions } from "@/lib/data/license-tiers";
 
 export type ResolvedLine = {
   beat_id: string;
@@ -21,14 +22,14 @@ export async function resolveCart(
 
   for (const line of lines) {
     const qty = Math.min(99, Math.max(1, Math.floor(line.quantity || 1)));
-    const beat = STATIC_BEATS.find(
-      (b) => b.slug === line.beat_slug && b.is_active,
-    );
+    const beat = await getBeatBySlug(line.beat_slug);
     if (!beat) {
       return { lines: [], subtotal_cents: 0, error: "Invalid beat in cart" };
     }
 
-    const tier = STATIC_LICENSE_TIERS.find((t) => t.slug === line.license_tier_slug);
+    const tier = (await getBeatLicenseOptions(beat.id)).find(
+      (t) => t.slug === line.license_tier_slug,
+    );
     if (!tier) {
       return { lines: [], subtotal_cents: 0, error: "Invalid license tier" };
     }

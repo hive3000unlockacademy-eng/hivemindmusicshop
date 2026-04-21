@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { BeatDetail } from "@/components/shop/beat-detail";
 import { getBeatBySlug } from "@/lib/data/beats";
-import { getLicenseTiers } from "@/lib/data/license-tiers";
+import { getBeatLicenseOptions } from "@/lib/data/license-tiers";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -28,13 +28,12 @@ export default async function BeatDetailPage({ params, searchParams }: Props) {
   const cartError =
     typeof cartErr === "string" ? cartErr : Array.isArray(cartErr) ? cartErr[0] : undefined;
 
-  const [beat, tiers] = await Promise.all([
-    getBeatBySlug(slug),
-    getLicenseTiers(),
-  ]);
+  const beat = await getBeatBySlug(slug);
   if (!beat) {
     notFound();
   }
+
+  const tiers = await getBeatLicenseOptions(beat.id);
 
   const tierOptions = tiers.map((t) => ({
     slug: t.slug,

@@ -54,6 +54,7 @@ export function SiteFooter() {
               <Link
                 key={l.href}
                 href={l.href}
+                prefetch={l.href.startsWith("/admin") ? false : undefined}
                 className="text-sm text-[#016b28] transition hover:text-[#1f9d55]"
               >
                 {l.label}

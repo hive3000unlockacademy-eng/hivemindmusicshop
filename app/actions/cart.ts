@@ -2,12 +2,13 @@
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import { STATIC_BEATS, STATIC_LICENSE_TIERS } from "@/lib/catalog/static-data";
 import {
   getCartFromCookie,
   setCartCookie,
 } from "@/lib/cart/cookie";
 import type { CartLine } from "@/lib/cart/types";
+import { getBeatBySlug } from "@/lib/data/beats";
+import { getBeatLicenseOptions } from "@/lib/data/license-tiers";
 
 function redirectCartError(beatSlug: string, message: string): never {
   redirect(
@@ -23,8 +24,10 @@ export async function addToCartAction(formData: FormData) {
     redirect("/beats");
   }
 
-  const beat = STATIC_BEATS.find((b) => b.slug === beatSlug && b.is_active);
-  const tier = STATIC_LICENSE_TIERS.find((t) => t.slug === tierSlug);
+  const beat = await getBeatBySlug(beatSlug);
+  const tier = beat
+    ? (await getBeatLicenseOptions(beat.id)).find((t) => t.slug === tierSlug)
+    : null;
 
   if (!beat || !tier) {
     redirectCartError(beatSlug, "Invalid selection");

@@ -12,7 +12,10 @@ export type BeatRow = {
   is_active: boolean;
   is_featured: boolean;
   artwork_path: string | null;
+  source_audio_path?: string | null;
   preview_path: string | null;
+  preview_start_seconds?: number | null;
+  preview_duration_seconds?: number | null;
   duration_seconds: number | null;
   created_at: string;
   updated_at: string;
@@ -29,6 +32,24 @@ export type LicenseTierRow = {
   is_highlighted: boolean;
   created_at: string;
   updated_at: string;
+};
+
+export type BeatLicensePriceRow = {
+  beat_id: string;
+  license_tier_id: string;
+  price_cents: number;
+  created_at: string;
+  updated_at: string;
+};
+
+export type BeatLicenseOption = {
+  id: string;
+  slug: string;
+  name: string;
+  description: string | null;
+  sort_order: number;
+  is_highlighted: boolean;
+  price_cents: number;
 };
 
 export type VideoRow = {

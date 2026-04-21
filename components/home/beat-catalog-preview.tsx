@@ -16,116 +16,7 @@ export type PreviewBeat = {
   coverUrl?: string | null;
 };
 
-const placeholder: PreviewBeat[] = [
-  {
-    slug: "midnight-run",
-    title: "Midnight Run",
-    genre: "Dark Trap",
-    duration: "02:38",
-    bpm: 140,
-    tags: ["drill", "cinematic"],
-    coverUrl: "/images/beats/midnight-run.jpg",
-  },
-  {
-    slug: "neon-drift",
-    title: "Neon Drift",
-    genre: "Melodic",
-    duration: "03:05",
-    bpm: 97,
-    tags: ["westcoast", "bouncy"],
-    coverUrl: "/images/beats/neon-drift.jpg",
-  },
-  {
-    slug: "signal-lost",
-    title: "Signal Lost",
-    genre: "R&B",
-    duration: "02:52",
-    bpm: 88,
-    tags: ["smooth", "vibes"],
-    coverUrl: "/images/beats/signal-lost.jpg",
-  },
-  {
-    slug: "chrome-rain",
-    title: "Chrome Rain",
-    genre: "Drill",
-    duration: "02:48",
-    bpm: 144,
-    tags: ["melodic", "bounce"],
-    coverUrl: "/images/beats/midnight-run.jpg",
-  },
-  {
-    slug: "void-walk",
-    title: "Void Walk",
-    genre: "Dark Trap",
-    duration: "03:15",
-    bpm: 132,
-    tags: ["cinematic", "wide"],
-    coverUrl: "/images/beats/neon-drift.jpg",
-  },
-  {
-    slug: "glass-ceiling",
-    title: "Glass Ceiling",
-    genre: "Trap",
-    duration: "03:01",
-    bpm: 150,
-    tags: ["airy", "crisp"],
-    coverUrl: "/images/beats/signal-lost.jpg",
-  },
-  {
-    slug: "redline-hush",
-    title: "Redline Hush",
-    genre: "Drill",
-    duration: "02:34",
-    bpm: 160,
-    tags: ["uptempo", "shuffle"],
-    coverUrl: "/images/beats/midnight-run.jpg",
-  },
-  {
-    slug: "after-midnight",
-    title: "After Midnight",
-    genre: "R&B",
-    duration: "03:24",
-    bpm: 82,
-    tags: ["late", "smooth"],
-    coverUrl: "/images/beats/neon-drift.jpg",
-  },
-  {
-    slug: "low-tide",
-    title: "Low Tide",
-    genre: "Melodic",
-    duration: "02:56",
-    bpm: 94,
-    tags: ["laid-back", "coastal"],
-    coverUrl: "/images/beats/signal-lost.jpg",
-  },
-  {
-    slug: "ice-palace",
-    title: "Ice Palace",
-    genre: "Trap",
-    duration: "03:09",
-    bpm: 138,
-    tags: ["cold", "sliding"],
-    coverUrl: "/images/beats/midnight-run.jpg",
-  },
-  {
-    slug: "north-star",
-    title: "North Star",
-    genre: "Hip-Hop",
-    duration: "03:18",
-    bpm: 128,
-    tags: ["anthem", "hook"],
-    coverUrl: "/images/beats/neon-drift.jpg",
-  },
-  {
-    slug: "heavy-air",
-    title: "Heavy Air",
-    genre: "Boom Bap",
-    duration: "03:43",
-    bpm: 70,
-    tags: ["dense", "slow"],
-    coverUrl: "/images/beats/signal-lost.jpg",
-  },
-];
+const placeholder: PreviewBeat[] = [];
 
 export function BeatCatalogPreview({
   beats,
@@ -135,7 +26,7 @@ export function BeatCatalogPreview({
   beats?: PreviewBeat[];
   hideIntro?: boolean;
 }) {
-  const list = beats?.length ? beats : placeholder;
+  const list = beats ?? placeholder;
   return (
     <section
       id="catalog"
