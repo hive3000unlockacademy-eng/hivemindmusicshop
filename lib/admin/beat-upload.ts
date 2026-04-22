@@ -2,7 +2,7 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 
 export type LicensePriceInput = {
   licenseTierId: string;
-  priceCents: number;
+  priceCents?: number;
 };
 
 export type UploadBeatInput = {
@@ -12,7 +12,7 @@ export type UploadBeatInput = {
   audioFile: File;
   artworkFile?: File | null;
   publish: boolean;
-  licensePrices: LicensePriceInput[];
+  licenseTierIds: string[];
 };
 
 type PreviewClip = {
@@ -139,6 +139,10 @@ export async function uploadBeatRecord(
   supabase: SupabaseClient,
   input: UploadBeatInput,
 ) {
+  if (!input.licenseTierIds.length) {
+    throw new Error("Select at least one license tier for this beat.");
+  }
+
   const slug = await ensureUniqueSlug(supabase, input.title);
   const stamp = Date.now();
   const audioExt = fileExtension(input.audioFile.name) || ".mp3";
@@ -206,11 +210,18 @@ export async function uploadBeatRecord(
   }
 
   const beatId = insertedBeat.data.id;
+  const { data: tiers, error: tiersError } = await supabase
+    .from("license_tiers")
+    .select("id, price_cents")
+    .in("id", input.licenseTierIds);
+  if (tiersError) {
+    throw new Error(tiersError.message);
+  }
   const pricingInsert = await supabase.from("beat_license_prices").insert(
-    input.licensePrices.map((entry) => ({
+    (tiers ?? []).map((tier) => ({
       beat_id: beatId,
-      license_tier_id: entry.licenseTierId,
-      price_cents: entry.priceCents,
+      license_tier_id: tier.id,
+      price_cents: tier.price_cents,
     })),
   );
   if (pricingInsert.error) {

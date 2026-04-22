@@ -1,14 +1,21 @@
-import type { Metadata } from "next";
 import {
   LegalDocLayout,
   LegalSection,
 } from "@/components/legal/legal-doc-layout";
+import { marketingMetadata } from "@/lib/seo/marketing-metadata";
 
-export const metadata: Metadata = {
+export const metadata = marketingMetadata({
   title: "Terms of Service",
   description:
     "Terms for purchasing and licensing beats on HiveMindMusic.Shop — HiveMind Productions.",
-};
+  path: "/terms",
+  keywords: [
+    "terms of service",
+    "beat license terms",
+    "HiveMind Productions",
+    "HiveMindMusic.Shop",
+  ],
+});
 
 export default function TermsPage() {
   return (

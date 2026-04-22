@@ -1,4 +1,13 @@
 import Link from "next/link";
+import { marketingMetadata } from "@/lib/seo/marketing-metadata";
+
+export const metadata = marketingMetadata({
+  title: "Sign-in link error",
+  description:
+    "This admin sign-in link expired or was already used. Request a new link from the login page.",
+  path: "/auth/auth-code-error",
+  noindex: true,
+});
 
 export default function AuthCodeErrorPage() {
   return (

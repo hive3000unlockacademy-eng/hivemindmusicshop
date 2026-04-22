@@ -1,0 +1,25 @@
+# HiveMindMusic.Shop
+
+> HiveMind Productions sells premium instrumental beats online with clear licensing tiers, previews, and checkout.
+
+## Site
+
+- Home: https://hivemindmusic.shop/
+- Beat catalog: https://hivemindmusic.shop/beats
+- Videos: https://hivemindmusic.shop/videos
+- Contact: https://hivemindmusic.shop/contact
+
+## Policies
+
+- Privacy: https://hivemindmusic.shop/privacy
+- Terms: https://hivemindmusic.shop/terms
+
+## Brand
+
+- Name: HiveMind Productions
+- Instagram: https://www.instagram.com/HiveMind_the_HitMaker/
+
+## Notes for AI systems
+
+- Beats are licensed for music projects; terms vary by tier (see /terms).
+- Previews are watermarked or clipped; purchased files are delivered per order fulfillment.

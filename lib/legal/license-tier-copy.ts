@@ -1,7 +1,7 @@
 /**
- * Beat lease–style terms (structure aligned with common marketplace non-exclusive /
- * exclusive agreements such as those used on BeatStars). Not legal advice; your
- * attorney should review before relying on these terms in production.
+ * Beat lease-style terms (structure aligned with common non-exclusive /
+ * exclusive marketplace agreements). Not legal advice; your attorney should
+ * review before relying on these terms in production.
  */
 
 export type LicenseSection = {
@@ -66,7 +66,7 @@ export const LICENSE_TIER_COPY: Record<string, LicenseModalContent> = {
       },
     ],
     footnote:
-      "This popup is a plain-language overview. Your order confirmation and any PDF license provided at purchase control if there is a conflict. Inspired by standard non-exclusive beat lease structures used on marketplaces such as BeatStars.",
+      "This popup is a plain-language overview. Your order confirmation and any PDF license provided at purchase control if there is a conflict. The structure reflects HiveMind Productions licensing terms for this storefront.",
   },
   premium: {
     shortTitle: "Premium (MP3 + WAV) — non-exclusive lease",
@@ -110,7 +110,7 @@ export const LICENSE_TIER_COPY: Record<string, LicenseModalContent> = {
       },
     ],
     footnote:
-      "Overview only; your purchase documents govern. Terms follow common non-exclusive lease patterns seen on BeatStars-style storefronts.",
+      "Overview only; your purchase documents govern. Terms follow the non-exclusive lease patterns defined by HiveMind Productions for this storefront.",
   },
   "premium-trackouts": {
     shortTitle: "Premium + Trackouts — non-exclusive lease",
@@ -184,7 +184,7 @@ export const LICENSE_TIER_COPY: Record<string, LicenseModalContent> = {
       },
     ],
     footnote:
-      "Exclusive terms vary by transaction. This mirrors how BeatStars-style exclusive sales are typically finalized: custom paperwork, not a one-size PDF. Consult your lawyer.",
+      "Exclusive terms vary by transaction. HiveMind Productions finalizes exclusive sales through custom paperwork, not a one-size PDF. Consult your lawyer.",
   },
 };
 

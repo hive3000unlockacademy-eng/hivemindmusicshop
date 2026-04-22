@@ -1,4 +1,18 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: {
+    default: "Admin",
+    template: "%s · Admin · HiveMind",
+  },
+  description: "HiveMindMusic.Shop administration.",
+  robots: {
+    index: false,
+    follow: false,
+    googleBot: { index: false, follow: false },
+  },
+};
 
 export default function AdminLayout({
   children,

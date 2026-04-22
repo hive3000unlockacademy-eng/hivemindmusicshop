@@ -1,14 +1,21 @@
-import type { Metadata } from "next";
 import {
   LegalDocLayout,
   LegalSection,
 } from "@/components/legal/legal-doc-layout";
+import { marketingMetadata } from "@/lib/seo/marketing-metadata";
 
-export const metadata: Metadata = {
+export const metadata = marketingMetadata({
   title: "Privacy Policy",
   description:
     "How HiveMind Productions collects and uses information on HiveMindMusic.Shop.",
-};
+  path: "/privacy",
+  keywords: [
+    "privacy policy",
+    "HiveMind Productions",
+    "HiveMindMusic.Shop",
+    "data protection",
+  ],
+});
 
 export default function PrivacyPage() {
   return (

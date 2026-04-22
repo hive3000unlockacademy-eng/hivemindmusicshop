@@ -1,6 +1,7 @@
 "use client";
 
 import { useAudio } from "@/components/player/audio-context";
+import { trackBeatStoreEvent } from "@/lib/analytics/client-events";
 
 export function BeatDetailPlayer({
   slug,
@@ -33,6 +34,7 @@ export function BeatDetailPlayer({
             if (active) {
               toggle();
             } else {
+              trackBeatStoreEvent("preview", slug, { source: "beat_detail" });
               play({ slug, title, previewUrl });
             }
           }}

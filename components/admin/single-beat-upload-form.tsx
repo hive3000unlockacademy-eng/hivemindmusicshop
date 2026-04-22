@@ -14,15 +14,17 @@ type Tier = {
 
 export function SingleBeatUploadForm({ tiers }: { tiers: Tier[] }) {
   const router = useRouter();
+  const defaultSelected = Object.fromEntries(
+    tiers.map((tier, index) => [tier.id, index === 0]),
+  ) as Record<string, boolean>;
   const [audioFile, setAudioFile] = useState<File | null>(null);
   const [artworkFile, setArtworkFile] = useState<File | null>(null);
   const [title, setTitle] = useState("");
   const [genre, setGenre] = useState("");
   const [bpm, setBpm] = useState("");
   const [publish, setPublish] = useState(true);
-  const [prices, setPrices] = useState<Record<string, string>>(
-    Object.fromEntries(tiers.map((tier) => [tier.id, String(tier.price_cents)])),
-  );
+  const [selectedTiers, setSelectedTiers] =
+    useState<Record<string, boolean>>(defaultSelected);
   const [state, setState] = useState<{
     pending: boolean;
     error?: string;
@@ -40,6 +42,18 @@ export function SingleBeatUploadForm({ tiers }: { tiers: Tier[] }) {
 
     try {
       const supabase = createBrowserClient();
+      const selected = tiers
+        .filter((tier) => selectedTiers[tier.id])
+        .map((tier) => tier.id);
+
+      if (!selected.length) {
+        setState({
+          pending: false,
+          error: "Select at least one license tier.",
+        });
+        return;
+      }
+
       const result = await uploadBeatRecord(supabase, {
         title,
         genre: genre.trim() || null,
@@ -47,10 +61,7 @@ export function SingleBeatUploadForm({ tiers }: { tiers: Tier[] }) {
         audioFile,
         artworkFile,
         publish,
-        licensePrices: tiers.map((tier) => ({
-          licenseTierId: tier.id,
-          priceCents: Number(prices[tier.id] ?? tier.price_cents),
-        })),
+        licenseTierIds: selected,
       });
 
       setState({
@@ -62,9 +73,7 @@ export function SingleBeatUploadForm({ tiers }: { tiers: Tier[] }) {
       setBpm("");
       setAudioFile(null);
       setArtworkFile(null);
-      setPrices(
-        Object.fromEntries(tiers.map((tier) => [tier.id, String(tier.price_cents)])),
-      );
+      setSelectedTiers(defaultSelected);
       router.refresh();
     } catch (error) {
       setState({
@@ -141,20 +150,27 @@ export function SingleBeatUploadForm({ tiers }: { tiers: Tier[] }) {
             License pricing
           </h2>
           <p className="text-sm text-[#A1A1AA]">
-            Every beat is sold under all four license options.
+            Select which license tiers are available for this beat. Prices come
+            from each license tier automatically.
           </p>
           <div className="space-y-4">
             {tiers.map((tier) => (
-              <label key={tier.id} className="block text-sm text-[#A1A1AA]">
-                {tier.name}
-                <input
-                  inputMode="numeric"
-                  value={prices[tier.id] ?? ""}
-                  onChange={(e) =>
-                    setPrices((prev) => ({ ...prev, [tier.id]: e.target.value }))
-                  }
-                  className="mt-2 w-full rounded-md border border-white/15 bg-[#0A0A0A] px-4 py-3 text-white"
-                />
+              <label key={tier.id} className="block rounded-lg border border-white/10 p-3 text-sm text-[#A1A1AA]">
+                <span className="flex items-center justify-between gap-3">
+                  <span className="text-white">
+                    {tier.name} — ${(tier.price_cents / 100).toFixed(2)}
+                  </span>
+                  <input
+                    type="checkbox"
+                    checked={Boolean(selectedTiers[tier.id])}
+                    onChange={(e) =>
+                      setSelectedTiers((prev) => ({
+                        ...prev,
+                        [tier.id]: e.target.checked,
+                      }))
+                    }
+                  />
+                </span>
               </label>
             ))}
           </div>

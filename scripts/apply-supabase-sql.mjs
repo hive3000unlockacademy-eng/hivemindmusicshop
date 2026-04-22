@@ -62,6 +62,7 @@ const files = [
   "supabase/migrations/20250410120000_is_admin_jwt_robust.sql",
   "supabase/migrations/20260421023309_dashboard_schema_redesign.sql",
   "supabase/migrations/20260421024056_dashboard_storage_rls.sql",
+  "supabase/migrations/20260421030000_beat_store_events.sql",
   "supabase/seed.sql",
 ];
 

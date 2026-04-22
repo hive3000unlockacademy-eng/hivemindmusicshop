@@ -8,6 +8,18 @@ export type Json = string | number | boolean | null | { [key: string]: Json | un
 export interface Database {
   public: {
     Tables: {
+      beat_store_events: {
+        Row: {
+          id: number;
+          event_type: string;
+          beat_slug: string;
+          session_id: string | null;
+          page_path: string | null;
+          user_agent: string | null;
+          metadata: Json | null;
+          created_at: string;
+        };
+      };
       beat_license_prices: {
         Row: {
           beat_id: string;

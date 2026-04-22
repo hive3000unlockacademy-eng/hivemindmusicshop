@@ -1,13 +1,21 @@
-import type { Metadata } from "next";
 import { Container } from "@/components/ui/container";
 import { VideoGridClient } from "@/components/videos/video-grid-client";
 import { getVideos, groupVideosBySection } from "@/lib/data/videos";
 import { VIDEO_PAGE_SECTIONS } from "@/lib/videos/sections";
+import { marketingMetadata } from "@/lib/seo/marketing-metadata";
 
-export const metadata: Metadata = {
+export const metadata = marketingMetadata({
   title: "Videos",
-  description: "Music videos, podcasts, and more from HiveMind.",
-};
+  description:
+    "Music videos, podcasts, and artist content from HiveMind Productions — organized by category.",
+  path: "/videos",
+  keywords: [
+    "HiveMind videos",
+    "music videos",
+    "producer content",
+    "HiveMind Productions",
+  ],
+});
 
 export default async function VideosPage() {
   const videos = await getVideos();

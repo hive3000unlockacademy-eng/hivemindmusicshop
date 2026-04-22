@@ -1,14 +1,18 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { CheckoutClient } from "@/components/checkout/checkout-client";
 import { Container } from "@/components/ui/container";
 import { getCartFromCookie } from "@/lib/cart/cookie";
 import { resolveCart } from "@/lib/cart/resolve";
+import { marketingMetadata } from "@/lib/seo/marketing-metadata";
 
-export const metadata: Metadata = {
+export const metadata = marketingMetadata({
   title: "Checkout",
-};
+  description:
+    "Secure checkout for HiveMind beat licenses via PayPal on HiveMindMusic.Shop.",
+  path: "/checkout",
+  keywords: ["checkout", "buy beats", "PayPal", "HiveMind Productions", "beat license"],
+});
 
 export default async function CheckoutPage() {
   const raw = await getCartFromCookie();

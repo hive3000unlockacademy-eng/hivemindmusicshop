@@ -1,14 +1,22 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import { ContactForm } from "@/components/contact/contact-form";
 import { Container } from "@/components/ui/container";
+import { marketingMetadata } from "@/lib/seo/marketing-metadata";
 import contactPhoto from "../../../public/contact.jpg";
 
-export const metadata: Metadata = {
+export const metadata = marketingMetadata({
   title: "Contact",
   description:
-    "Contact HiveMind Productions for collabs, custom beats, and inquiries.",
-};
+    "Contact HiveMind Productions for business inquiries, custom beats, collabs, and licensing questions.",
+  path: "/contact",
+  keywords: [
+    "contact HiveMind",
+    "custom beats",
+    "music collab",
+    "HiveMind Productions",
+    "beat producer contact",
+  ],
+});
 
 export default function ContactPage() {
   return (

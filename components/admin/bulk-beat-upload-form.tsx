@@ -18,7 +18,7 @@ type UploadRow = {
   title: string;
   genre: string;
   bpm: string;
-  prices: Record<string, string>;
+  selectedTiers: Record<string, boolean>;
 };
 
 function titleFromFilename(name: string) {
@@ -32,6 +32,9 @@ function titleFromFilename(name: string) {
 
 export function BulkBeatUploadForm({ tiers }: { tiers: Tier[] }) {
   const router = useRouter();
+  const defaultSelected = Object.fromEntries(
+    tiers.map((tier, index) => [tier.id, index === 0]),
+  ) as Record<string, boolean>;
   const [rows, setRows] = useState<UploadRow[]>([]);
   const [publish, setPublish] = useState(true);
   const [state, setState] = useState<{
@@ -63,16 +66,23 @@ export function BulkBeatUploadForm({ tiers }: { tiers: Tier[] }) {
           progress: `Uploading ${i + 1}/${rows.length}: ${row.title}`,
         });
 
+        const selected = tiers
+          .filter((tier) => row.selectedTiers[tier.id])
+          .map((tier) => tier.id);
+
+        if (!selected.length) {
+          throw new Error(
+            `Select at least one license tier for "${row.title}".`,
+          );
+        }
+
         await uploadBeatRecord(supabase, {
           title: row.title,
           genre: row.genre.trim() || null,
           bpm: row.bpm ? Number(row.bpm) : null,
           audioFile: row.file,
           publish,
-          licensePrices: tiers.map((tier) => ({
-            licenseTierId: tier.id,
-            priceCents: Number(row.prices[tier.id] ?? tier.price_cents),
-          })),
+          licenseTierIds: selected,
         });
       }
 
@@ -110,9 +120,7 @@ export function BulkBeatUploadForm({ tiers }: { tiers: Tier[] }) {
                 title: titleFromFilename(file.name),
                 genre: "",
                 bpm: "",
-                prices: Object.fromEntries(
-                  tiers.map((tier) => [tier.id, String(tier.price_cents)]),
-                ),
+                selectedTiers: defaultSelected,
               })),
             );
           }}
@@ -161,18 +169,24 @@ export function BulkBeatUploadForm({ tiers }: { tiers: Tier[] }) {
               </div>
               <div className="mt-4 grid gap-4 lg:grid-cols-2">
                 {tiers.map((tier) => (
-                  <label key={tier.id} className="block text-sm text-[#A1A1AA]">
-                    {tier.name}
-                    <input
-                      inputMode="numeric"
-                      value={row.prices[tier.id] ?? ""}
-                      onChange={(e) =>
-                        updateRow(row.id, {
-                          prices: { ...row.prices, [tier.id]: e.target.value },
-                        })
-                      }
-                      className="mt-2 w-full rounded-md border border-white/15 bg-[#0A0A0A] px-4 py-3 text-white"
-                    />
+                  <label key={tier.id} className="block rounded-lg border border-white/10 p-3 text-sm text-[#A1A1AA]">
+                    <span className="flex items-center justify-between gap-3">
+                      <span className="text-white">
+                        {tier.name} — ${(tier.price_cents / 100).toFixed(2)}
+                      </span>
+                      <input
+                        type="checkbox"
+                        checked={Boolean(row.selectedTiers[tier.id])}
+                        onChange={(e) =>
+                          updateRow(row.id, {
+                            selectedTiers: {
+                              ...row.selectedTiers,
+                              [tier.id]: e.target.checked,
+                            },
+                          })
+                        }
+                      />
+                    </span>
                   </label>
                 ))}
               </div>

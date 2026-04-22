@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { BeatDetail } from "@/components/shop/beat-detail";
+import { JsonLd } from "@/components/seo/json-ld";
 import { getBeatBySlug } from "@/lib/data/beats";
 import { getBeatLicenseOptions } from "@/lib/data/license-tiers";
+import { buildBeatProductJsonLd } from "@/lib/seo/json-ld-builders";
+import { beatDetailMetadata } from "@/lib/seo/marketing-metadata";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -15,10 +18,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!beat) {
     return { title: "Beat" };
   }
-  return {
-    title: beat.title,
-    description: beat.description ?? `${beat.title} — HiveMind beat`,
-  };
+  const tiers = await getBeatLicenseOptions(beat.id);
+  return beatDetailMetadata(beat, tiers);
 }
 
 export default async function BeatDetailPage({ params, searchParams }: Props) {
@@ -42,10 +43,13 @@ export default async function BeatDetailPage({ params, searchParams }: Props) {
   }));
 
   return (
-    <BeatDetail
-      beat={beat}
-      licenseTiers={tierOptions}
-      cartError={cartError}
-    />
+    <>
+      <JsonLd data={buildBeatProductJsonLd(beat, tiers)} />
+      <BeatDetail
+        beat={beat}
+        licenseTiers={tierOptions}
+        cartError={cartError}
+      />
+    </>
   );
 }

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { addToCartAction } from "@/app/actions/cart";
 import { useAudio } from "@/components/player/audio-context";
 import type { PreviewBeat } from "@/components/home/beat-catalog-preview";
+import { trackBeatStoreEvent } from "@/lib/analytics/client-events";
 
 /** Matches default entry-tier slug in `lib/catalog/static-data` / cart resolver. */
 const DEFAULT_CART_TIER_SLUG = "basic";
@@ -81,6 +82,9 @@ export function BeatCatalogPreviewClient({ beats }: { beats: PreviewBeat[] }) {
                       onClick={(e) => {
                         e.preventDefault();
                         if (!url) return;
+                        trackBeatStoreEvent("preview", b.slug, {
+                          source: "catalog_table",
+                        });
                         play({ slug: b.slug, title: b.title, previewUrl: url });
                       }}
                       className="inline-flex rounded-md bg-[#016b28] px-3 py-1.5 text-xs font-semibold text-white shadow-[0_0_12px_rgba(1,107,40,0.2)] transition-shadow duration-200 hover:shadow-[0_0_24px_rgba(1,107,40,0.55),0_0_48px_rgba(1,107,40,0.22)] disabled:cursor-not-allowed disabled:opacity-40"
@@ -157,6 +161,9 @@ export function BeatCatalogPreviewClient({ beats }: { beats: PreviewBeat[] }) {
                       disabled={!url}
                       onClick={() => {
                         if (!url) return;
+                        trackBeatStoreEvent("preview", b.slug, {
+                          source: "catalog_mobile",
+                        });
                         play({ slug: b.slug, title: b.title, previewUrl: url });
                       }}
                       className="inline-flex rounded-md bg-[#016b28] px-3 py-1 text-xs font-semibold text-white shadow-[0_0_12px_rgba(1,107,40,0.2)] transition-shadow duration-200 hover:shadow-[0_0_24px_rgba(1,107,40,0.55),0_0_48px_rgba(1,107,40,0.22)] disabled:cursor-not-allowed disabled:opacity-40"

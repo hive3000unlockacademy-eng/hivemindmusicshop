@@ -1,14 +1,18 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { clearCartAction, removeLineAction } from "@/app/actions/cart";
 import { Container } from "@/components/ui/container";
 import { getCartFromCookie } from "@/lib/cart/cookie";
 import { formatLinePrice, resolveCart } from "@/lib/cart/resolve";
 import { formatUsd } from "@/lib/format";
+import { marketingMetadata } from "@/lib/seo/marketing-metadata";
 
-export const metadata: Metadata = {
+export const metadata = marketingMetadata({
   title: "Cart",
-};
+  description:
+    "Review licensed beats in your HiveMindMusic.Shop cart before checkout.",
+  path: "/cart",
+  keywords: ["shopping cart", "buy beats", "HiveMindMusic.Shop", "license beats"],
+});
 
 export default async function CartPage() {
   const raw = await getCartFromCookie();

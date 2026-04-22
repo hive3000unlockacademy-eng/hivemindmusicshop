@@ -3,14 +3,36 @@ import { BeatsPageHero } from "@/components/beats/beats-page-hero";
 import { FinalCta } from "@/components/home/final-cta";
 import { LicensingTierCards } from "@/components/home/licensing-tier-cards";
 import { PlacementsGrid } from "@/components/home/placements-grid";
+import { JsonLd } from "@/components/seo/json-ld";
 import { Container } from "@/components/ui/container";
 import { PLACEMENTS } from "@/lib/data/placements";
 import { getLicenseTiers } from "@/lib/data/license-tiers";
 import { mapLicenseTierRow } from "@/lib/mappers/beats";
+import { buildOrganizationAndWebsiteGraph } from "@/lib/seo/json-ld-builders";
+import { marketingMetadata } from "@/lib/seo/marketing-metadata";
+import { absoluteUrl } from "@/lib/seo/site";
 import { resolvePlacements } from "@/lib/spotify-embed";
 
 /** `public/hero image.png` — “The HiveMind sound” section only. */
 const HIVE_MIND_SOUND_IMAGE = "/hero%20image.png";
+
+export const metadata = marketingMetadata({
+  title: "HiveMind Productions",
+  description:
+    "Premium melodic trap, drill, and Hip Hop/R&B beats from HiveMind Productions. Preview tracks, pick a license tier, and license instrumentals with clarity.",
+  path: "/",
+  keywords: [
+    "HiveMind Productions",
+    "buy beats",
+    "trap beats",
+    "drill beats",
+    "R&B beats",
+    "beat licensing",
+    "instrumentals",
+    "HiveMindMusic.Shop",
+  ],
+  ogImage: absoluteUrl("/blackwhite%20hero%20image.png"),
+});
 
 export default async function HomePage() {
   const tiers = await getLicenseTiers();
@@ -20,6 +42,7 @@ export default async function HomePage() {
 
   return (
     <>
+      <JsonLd data={buildOrganizationAndWebsiteGraph()} />
       <BeatsPageHero browseHref="/beats#catalog" />
       <PlacementsGrid items={placements} />
       <LicensingTierCards tiers={tierCards} />

@@ -9,6 +9,7 @@ import {
 import type { CartLine } from "@/lib/cart/types";
 import { getBeatBySlug } from "@/lib/data/beats";
 import { getBeatLicenseOptions } from "@/lib/data/license-tiers";
+import { createClient } from "@/lib/supabase/server";
 
 function redirectCartError(beatSlug: string, message: string): never {
   redirect(
@@ -45,6 +46,18 @@ export async function addToCartAction(formData: FormData) {
     };
   } else {
     next.push({ beat_slug: beatSlug, license_tier_slug: tierSlug, quantity: 1 });
+  }
+
+  try {
+    const supabase = await createClient();
+    await supabase.from("beat_store_events").insert({
+      event_type: "add_to_cart",
+      beat_slug: beatSlug,
+      page_path: `/beats/${beatSlug}`,
+      metadata: { license_tier_slug: tierSlug },
+    });
+  } catch {
+    // Tracking must never block checkout/cart actions.
   }
 
   await setCartCookie(next);

@@ -1,3 +1,6 @@
+const DEFAULT_BRAND_EMAIL = "HiveMindProducer@gmail.com";
+const DEFAULT_BRAND_NAME = "HiveMind Productions";
+
 export async function sendTransactionalEmail(params: {
   to: string;
   subject: string;
@@ -5,10 +8,10 @@ export async function sendTransactionalEmail(params: {
   replyTo?: string;
 }) {
   const key = process.env.SENDGRID_API_KEY;
-  const from = process.env.SENDGRID_FROM_EMAIL;
-  const fromName = process.env.SENDGRID_FROM_NAME ?? "HiveMind Productions";
-  if (!key || !from) {
-    console.warn("[email] SENDGRID_API_KEY or SENDGRID_FROM_EMAIL missing; skip send");
+  const from = process.env.SENDGRID_FROM_EMAIL ?? DEFAULT_BRAND_EMAIL;
+  const fromName = process.env.SENDGRID_FROM_NAME ?? DEFAULT_BRAND_NAME;
+  if (!key) {
+    console.warn("[email] SENDGRID_API_KEY missing; skip send");
     return { sent: false as const };
   }
 
@@ -28,7 +31,10 @@ export async function sendInternalEmail(params: {
   subject: string;
   html: string;
 }) {
-  const to = process.env.CONTACT_NOTIFICATION_EMAIL ?? process.env.SENDGRID_FROM_EMAIL;
+  const to =
+    process.env.CONTACT_NOTIFICATION_EMAIL ??
+    process.env.SENDGRID_FROM_EMAIL ??
+    DEFAULT_BRAND_EMAIL;
   if (!to) {
     console.warn("[email] CONTACT_NOTIFICATION_EMAIL missing");
     return { sent: false as const };
