@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     template: `%s · ${SITE_NAME}`,
   },
   description:
-    "Premium beats, licensing, and producer tools from HiveMind Productions — melodic trap, drill, and modern Hip Hop/R&B instrumentals.",
+    "Recording studio from HiveMind Productions — recording, mixing, mastering, and full production sessions.",
   metadataBase: new URL(SITE_URL),
   applicationName: SITE_NAME,
   authors: [{ name: BRAND, url: SITE_URL }],
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     siteName: SITE_NAME,
     title: `${BRAND} — ${SITE_NAME}`,
     description:
-      "Premium beats and clear licensing from HiveMind Productions. Preview tracks, choose a license tier, and buy with confidence.",
+      "Book recording, mixing, mastering, and full production sessions with HiveMind Productions.",
     images: [
       {
         url: DEFAULT_OG_IMAGE,
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${BRAND} — ${SITE_NAME}`,
     description:
-      "Premium beats and clear licensing from HiveMind Productions.",
+      "Recording studio sessions from HiveMind Productions.",
     images: [DEFAULT_OG_IMAGE],
   },
   robots: {

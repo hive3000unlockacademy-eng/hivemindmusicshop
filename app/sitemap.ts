@@ -1,5 +1,4 @@
 import type { MetadataRoute } from "next";
-import { getBeats } from "@/lib/data/beats";
 import { SITE_URL } from "@/lib/seo/site";
 
 const staticRoutes: MetadataRoute.Sitemap = [
@@ -9,29 +8,14 @@ const staticRoutes: MetadataRoute.Sitemap = [
     priority: 1,
   },
   {
-    url: `${SITE_URL}/beats`,
-    changeFrequency: "daily",
+    url: `${SITE_URL}/studio`,
+    changeFrequency: "weekly",
     priority: 0.95,
   },
   {
     url: `${SITE_URL}/videos`,
     changeFrequency: "weekly",
     priority: 0.75,
-  },
-  {
-    url: `${SITE_URL}/contact`,
-    changeFrequency: "monthly",
-    priority: 0.7,
-  },
-  {
-    url: `${SITE_URL}/cart`,
-    changeFrequency: "monthly",
-    priority: 0.4,
-  },
-  {
-    url: `${SITE_URL}/checkout`,
-    changeFrequency: "monthly",
-    priority: 0.4,
   },
   {
     url: `${SITE_URL}/privacy`,
@@ -45,14 +29,6 @@ const staticRoutes: MetadataRoute.Sitemap = [
   },
 ];
 
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const beats = await getBeats();
-  const beatEntries: MetadataRoute.Sitemap = beats.map((b) => ({
-    url: `${SITE_URL}/beats/${b.slug}`,
-    lastModified: new Date(b.updated_at),
-    changeFrequency: "weekly",
-    priority: 0.85,
-  }));
-
-  return [...staticRoutes, ...beatEntries];
+export default function sitemap(): MetadataRoute.Sitemap {
+  return staticRoutes;
 }

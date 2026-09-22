@@ -2,10 +2,9 @@ import Link from "next/link";
 import { Container } from "@/components/ui/container";
 
 const links = [
-  { href: "/beats", label: "Beats" },
+  { href: "/studio", label: "Studio" },
   { href: "/videos", label: "Videos" },
-  { href: "/contact", label: "Contact" },
-  { href: "/admin", label: "Admin" },
+  { href: "/studio#book", label: "Contact" },
 ];
 
 export function SiteFooter() {
@@ -18,7 +17,7 @@ export function SiteFooter() {
               HiveMind Productions
             </p>
             <p className="mt-2 text-sm text-[#A1A1AA]">
-              Premium beats and licensing.
+              Recording, mixing, and mastering.
             </p>
             <p className="mt-4 flex items-center gap-2 text-sm text-[#A1A1AA]">
               <a
@@ -54,7 +53,6 @@ export function SiteFooter() {
               <Link
                 key={l.href}
                 href={l.href}
-                prefetch={l.href.startsWith("/admin") ? false : undefined}
                 className="text-sm text-[#016b28] transition hover:text-[#1f9d55]"
               >
                 {l.label}
@@ -67,16 +65,10 @@ export function SiteFooter() {
             className="flex flex-wrap justify-center gap-x-6 gap-y-2"
             aria-label="Legal"
           >
-            <Link
-              href="/privacy"
-              className="transition hover:text-white"
-            >
+            <Link href="/privacy" className="transition hover:text-white">
               Privacy Policy
             </Link>
-            <Link
-              href="/terms"
-              className="transition hover:text-white"
-            >
+            <Link href="/terms" className="transition hover:text-white">
               Terms of Service
             </Link>
           </nav>

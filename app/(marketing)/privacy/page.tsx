@@ -21,22 +21,21 @@ export default function PrivacyPage() {
   return (
     <LegalDocLayout
       title="Privacy Policy"
-      description="Last updated: April 2026. This policy describes how HiveMind Productions (“we,” “us”) handles information when you use HiveMindMusic.Shop."
+      description="Last updated: September 2026. This policy describes how HiveMind Productions (“we,” “us”) handles information when you use HiveMindMusic.Shop."
     >
       <LegalSection heading="What this covers">
         <p>
-          This policy applies to visitors and customers of our website and related
-          services for browsing, purchasing, and licensing instrumental beats. It
-          does not cover third-party sites linked from our store.
+          This policy applies to visitors who browse the site or contact us to book
+          recording, mixing, mastering, or full production sessions. It does not cover
+          third-party sites linked from our pages.
         </p>
       </LegalSection>
 
       <LegalSection heading="Information we collect">
         <p>
-          <strong className="text-[#E4E4E7]">You provide:</strong> contact or account
-          details when you reach out, create an account (if offered), or complete a
-          purchase (for example name, email, and billing-related information
-          required to fulfill your order).
+          <strong className="text-[#E4E4E7]">You provide:</strong> contact details when
+          you reach out or book a session (for example name, email, inquiry type, and
+          message), and any information needed to schedule or fulfill your session.
         </p>
         <p>
           <strong className="text-[#E4E4E7]">Automatically:</strong> basic technical
@@ -47,18 +46,18 @@ export default function PrivacyPage() {
 
       <LegalSection heading="How we use information">
         <ul className="list-inside list-disc space-y-2">
-          <li>Process orders, deliver licensed files, and provide support.</li>
-          <li>Send transactional messages (receipts, license details, important notices).</li>
+          <li>Respond to booking inquiries and schedule sessions.</li>
+          <li>Send transactional messages (confirmations, session details, important notices).</li>
           <li>Prevent fraud, abuse, and technical issues.</li>
-          <li>Improve the store experience and comply with legal obligations.</li>
+          <li>Improve the site and comply with legal obligations.</li>
         </ul>
       </LegalSection>
 
       <LegalSection heading="Payments">
         <p>
-          Payments may be processed by third-party providers (for example PayPal).
-          Those providers collect and process payment information under their own
-          privacy policies. We do not store full payment card numbers on our
+          If payment is collected for a session, it may be processed by third-party
+          providers. Those providers collect and process payment information under
+          their own privacy policies. We do not store full payment card numbers on our
           servers.
         </p>
       </LegalSection>
@@ -73,9 +72,9 @@ export default function PrivacyPage() {
 
       <LegalSection heading="Sharing">
         <p>
-          We share information only as needed: with payment and email/delivery
-          vendors, professional advisers when required, or when required by law. We
-          do not sell your personal information.
+          We share information only as needed: with email or payment vendors,
+          professional advisers when required, or when required by law. We do not sell
+          your personal information.
         </p>
       </LegalSection>
 
@@ -83,7 +82,7 @@ export default function PrivacyPage() {
         <p>
           We keep information as long as needed to provide the service, meet legal
           and tax requirements, and resolve disputes—typically for the life of your
-          customer relationship plus a reasonable period afterward.
+          relationship plus a reasonable period afterward.
         </p>
       </LegalSection>
 
@@ -114,7 +113,10 @@ export default function PrivacyPage() {
       <LegalSection heading="Contact">
         <p>
           Questions about this policy: use our{" "}
-          <a href="/contact" className="text-[#016b28] underline-offset-2 hover:underline">
+          <a
+            href="/studio#book"
+            className="text-[#016b28] underline-offset-2 hover:underline"
+          >
             contact form
           </a>
           , or reach us at the business email you provide for HiveMind Productions

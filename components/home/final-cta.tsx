@@ -26,18 +26,15 @@ export function FinalCta() {
           />
           <div className="relative z-10 p-10 text-center sm:p-14">
             <h2 className="font-[family-name:var(--font-beats-hero)] text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-              Ready to build?
+              Ready to record?
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-[#A1A1AA]">
-              Browse the catalog, explore videos, or reach out for exclusives and
-              custom work.
+              Book a session, explore videos, or reach out about your next
+              release.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-4">
-              <Link href="/beats" className={btnPrimary}>
-                Shop beats
-              </Link>
-              <Link href="/contact" className={btnSecondary}>
-                Contact
+              <Link href="/studio#book" className={btnPrimary}>
+                Book session
               </Link>
               <Link href="/videos" className={btnSecondary}>
                 Watch videos

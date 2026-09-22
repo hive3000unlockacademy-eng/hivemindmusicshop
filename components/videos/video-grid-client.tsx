@@ -50,6 +50,9 @@ export function VideoGridClient({
                 fill
                 className="object-cover transition group-hover:opacity-90"
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                // YouTube thumbs fail through Next's optimizer when Node TLS can't
+                // verify img.youtube.com (common on some local Windows setups).
+                unoptimized={thumb.startsWith("http")}
               />
               <div
                 className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent"

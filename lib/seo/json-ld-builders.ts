@@ -26,7 +26,7 @@ export function buildOrganizationAndWebsiteGraph() {
         url: SITE_URL,
         name: SITE_NAME,
         description:
-          "Premium beats, licensing, and producer tools from HiveMind Productions.",
+          "Recording studio from HiveMind Productions — recording, mixing, mastering, and full production.",
         publisher: { "@id": ORG_ID },
         inLanguage: "en-US",
       },

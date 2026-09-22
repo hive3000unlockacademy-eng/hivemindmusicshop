@@ -1,4 +1,5 @@
 import { createBrowserClient } from "@/lib/supabase/client";
+import { isSupabaseConfigured } from "@/lib/supabase/env";
 
 type BeatStoreEventType = "preview" | "add_to_cart";
 
@@ -18,7 +19,7 @@ export function trackBeatStoreEvent(
   beatSlug: string,
   metadata?: Record<string, unknown>,
 ) {
-  if (!beatSlug) return;
+  if (!beatSlug || !isSupabaseConfigured()) return;
   const supabase = createBrowserClient();
   const pagePath =
     typeof window !== "undefined" ? window.location.pathname : null;

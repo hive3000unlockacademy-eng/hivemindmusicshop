@@ -13,9 +13,10 @@ const TEXT_BODY = "#e4e4e7";
 
 export function inquiryTypeLabel(slug: string): string {
   const map: Record<string, string> = {
-    business: "Business",
-    "custom-beat": "Custom beat",
-    collab: "Collab",
+    recording: "Recording",
+    mixing: "Mixing",
+    mastering: "Mastering",
+    "full-production": "Full production",
     other: "Other",
   };
   return map[slug] ?? (slug || "General");

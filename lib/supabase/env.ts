@@ -1,4 +1,12 @@
-/** Shared env reads for Supabase clients (server, browser, root proxy). */
+/** Shared env reads for Supabase clients. */
+
+export function isSupabaseConfigured(): boolean {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL?.trim();
+  const key =
+    process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY?.trim() ||
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY?.trim();
+  return Boolean(url && key);
+}
 
 export function getSupabaseUrl(): string {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;

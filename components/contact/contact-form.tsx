@@ -1,10 +1,34 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { submitContactAction } from "@/app/actions/contact";
 
+const INQUIRY_OPTIONS = [
+  { value: "recording", label: "Recording" },
+  { value: "mixing", label: "Mixing" },
+  { value: "mastering", label: "Mastering" },
+  { value: "full-production", label: "Full production" },
+  { value: "other", label: "Other" },
+] as const;
+
+type InquiryValue = (typeof INQUIRY_OPTIONS)[number]["value"] | "";
+
+function isInquiryValue(value: string | null): value is Exclude<InquiryValue, ""> {
+  return INQUIRY_OPTIONS.some((option) => option.value === value);
+}
+
 export function ContactForm() {
+  const searchParams = useSearchParams();
+  const serviceParam = searchParams.get("service");
+  const serviceFromUrl = isInquiryValue(serviceParam) ? serviceParam : "";
+
+  const [inquiryType, setInquiryType] = useState<InquiryValue>(serviceFromUrl);
   const [state, formAction, pending] = useActionState(submitContactAction, {});
+
+  useEffect(() => {
+    setInquiryType(serviceFromUrl);
+  }, [serviceFromUrl]);
 
   if (state.ok) {
     return (
@@ -48,16 +72,18 @@ export function ContactForm() {
         <select
           id="inquiry_type"
           name="inquiry_type"
+          value={inquiryType}
+          onChange={(e) => setInquiryType(e.target.value as InquiryValue)}
           className="mt-2 w-full rounded-md border border-white/15 bg-[#0A0A0A] px-4 py-3 text-white focus:border-[#002400] focus:outline-none"
-          defaultValue=""
         >
           <option value="" disabled>
             Select…
           </option>
-          <option value="business">Business</option>
-          <option value="custom-beat">Custom beat</option>
-          <option value="collab">Collab</option>
-          <option value="other">Other</option>
+          {INQUIRY_OPTIONS.map((option) => (
+            <option key={option.value} value={option.value}>
+              {option.label}
+            </option>
+          ))}
         </select>
       </div>
       <div>

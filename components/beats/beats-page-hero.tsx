@@ -11,7 +11,7 @@ export const BEATS_PAGE_HERO_IMAGE = "/beats%20hero.png";
 type Props = {
   /** Default: {@link BEATS_PAGE_HERO_IMAGE} */
   imageSrc?: string;
-  /** Primary CTA target. Use `/beats#catalog` when this hero is shown on a page without `#catalog`. */
+  /** Primary CTA target. */
   browseHref?: string;
 };
 
@@ -21,7 +21,7 @@ type Props = {
  */
 export function BeatsPageHero({
   imageSrc = BEATS_PAGE_HERO_IMAGE,
-  browseHref = "#catalog",
+  browseHref = "/studio#book",
 }: Props) {
   return (
     <section className="relative isolate w-full overflow-hidden bg-[#050505]">
@@ -46,6 +46,11 @@ export function BeatsPageHero({
           className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-[#050505]/15"
           aria-hidden
         />
+        {/* Solid page black at the bottom edge so the next section has no seam */}
+        <div
+          className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-24 bg-gradient-to-t from-[#050505] from-40% via-[#050505]/80 to-transparent"
+          aria-hidden
+        />
 
         <Container className="absolute inset-0 z-10 flex items-center py-8 sm:py-12">
           <div className="max-w-2xl">
@@ -58,11 +63,12 @@ export function BeatsPageHero({
               </span>
             </h1>
             <p className="mt-5 max-w-lg text-base leading-relaxed text-[#C8C8C8] sm:mt-6 sm:text-lg">
-              Unlock beats that stand out from the rest.
+              Book studio time in Sullivan County, NY for recording, mixing, and
+              mastering.
             </p>
             <div className="mt-8 sm:mt-10">
               <Link href={browseHref} className={btnCta}>
-                Browse beats
+                Book session
               </Link>
             </div>
           </div>

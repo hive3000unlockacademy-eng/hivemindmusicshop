@@ -7,9 +7,9 @@ import { BrandLogo } from "@/components/layout/brand-logo";
 import { Container } from "@/components/ui/container";
 
 const nav = [
-  { href: "/beats", label: "Beats" },
+  { href: "/studio", label: "Studio" },
   { href: "/videos", label: "Videos" },
-  { href: "/contact", label: "Contact" },
+  { href: "/studio#book", label: "Contact" },
 ];
 
 const linkClass =
@@ -49,23 +49,11 @@ export function SiteHeader() {
         <BrandLogo />
         <nav className="hidden items-center gap-8 md:flex" aria-label="Main">
           {nav.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={linkClass}
-            >
+            <Link key={item.href} href={item.href} className={linkClass}>
               {item.label}
             </Link>
           ))}
         </nav>
-        <div className="hidden items-center md:flex">
-          <Link
-            href="/cart"
-            className="rounded-md border border-white/15 px-3 py-1.5 text-sm font-medium text-white transition hover:border-[#002400]/50"
-          >
-            Cart
-          </Link>
-        </div>
 
         <button
           type="button"
@@ -135,13 +123,6 @@ export function SiteHeader() {
                     {item.label}
                   </Link>
                 ))}
-                <Link
-                  href="/cart"
-                  className="mt-1 rounded-md border border-white/15 px-3 py-3 text-center text-base font-medium text-white transition hover:border-[#002400]/50"
-                  onClick={() => setMenuOpen(false)}
-                >
-                  Cart
-                </Link>
               </nav>
             </Container>
           </div>

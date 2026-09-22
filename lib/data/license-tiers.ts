@@ -1,9 +1,11 @@
 import { createClient } from "@/lib/supabase/server";
+import { isSupabaseConfigured } from "@/lib/supabase/env";
 import type { BeatLicenseOption, LicenseTierRow } from "@/lib/data/types";
 
 export type { LicenseTierRow };
 
 export async function getLicenseTiers(): Promise<LicenseTierRow[]> {
+  if (!isSupabaseConfigured()) return [];
   const supabase = await createClient();
   const { data, error } = await supabase
     .from("license_tiers")
@@ -16,6 +18,7 @@ export async function getLicenseTiers(): Promise<LicenseTierRow[]> {
 export async function getBeatLicenseOptions(
   beatId: string,
 ): Promise<BeatLicenseOption[]> {
+  if (!isSupabaseConfigured()) return [];
   const supabase = await createClient();
   const { data, error } = await supabase
     .from("beat_license_prices")

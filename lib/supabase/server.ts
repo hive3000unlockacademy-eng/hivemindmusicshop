@@ -16,7 +16,7 @@ export async function createClient() {
             cookieStore.set(name, value, options),
           );
         } catch {
-          // Called from a Server Component — root proxy refreshes the session.
+          // Called from a Server Component, where cookies cannot be set.
         }
       },
     },

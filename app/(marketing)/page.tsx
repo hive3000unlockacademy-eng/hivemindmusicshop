@@ -6,8 +6,6 @@ import { PlacementsGrid } from "@/components/home/placements-grid";
 import { JsonLd } from "@/components/seo/json-ld";
 import { Container } from "@/components/ui/container";
 import { PLACEMENTS } from "@/lib/data/placements";
-import { getLicenseTiers } from "@/lib/data/license-tiers";
-import { mapLicenseTierRow } from "@/lib/mappers/beats";
 import { buildOrganizationAndWebsiteGraph } from "@/lib/seo/json-ld-builders";
 import { marketingMetadata } from "@/lib/seo/marketing-metadata";
 import { absoluteUrl } from "@/lib/seo/site";
@@ -19,33 +17,29 @@ const HIVE_MIND_SOUND_IMAGE = "/hero%20image.png";
 export const metadata = marketingMetadata({
   title: "HiveMind Productions",
   description:
-    "Premium melodic trap, drill, and Hip Hop/R&B beats from HiveMind Productions. Preview tracks, pick a license tier, and license instrumentals with clarity.",
+    "Recording studio from HiveMind Productions. Book sessions for recording, mixing, mastering, and full production.",
   path: "/",
   keywords: [
     "HiveMind Productions",
-    "buy beats",
-    "trap beats",
-    "drill beats",
-    "R&B beats",
-    "beat licensing",
-    "instrumentals",
+    "recording studio",
+    "book a session",
+    "vocal recording",
+    "mixing",
+    "mastering",
     "HiveMindMusic.Shop",
   ],
   ogImage: absoluteUrl("/blackwhite%20hero%20image.png"),
 });
 
 export default async function HomePage() {
-  const tiers = await getLicenseTiers();
   const placements = resolvePlacements(PLACEMENTS);
-
-  const tierCards = tiers.length ? tiers.map(mapLicenseTierRow) : undefined;
 
   return (
     <>
       <JsonLd data={buildOrganizationAndWebsiteGraph()} />
-      <BeatsPageHero browseHref="/beats#catalog" />
+      <BeatsPageHero browseHref="/studio#book" />
+      <LicensingTierCards />
       <PlacementsGrid items={placements} />
-      <LicensingTierCards tiers={tierCards} />
       <section className="py-16">
         <Container>
           <div className="grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-12">
@@ -54,12 +48,11 @@ export default async function HomePage() {
                 The HiveMind sound
               </h2>
               <p className="mt-4 max-w-3xl leading-relaxed text-[#A1A1AA]">
-                HiveMind Productions builds records at the edge of melodic trap/drill
-                and modern Hip Hop/R&B—tight drums, wide mixes, powerful 808&apos;s,
-                and hooks that stick.
-                This shop
-                is built for artists who want clarity: what you hear in the preview
-                is what you&apos;re licensing.
+                HiveMind Productions builds records at the edge of melodic
+                trap/drill and modern Hip Hop/R&amp;B—tight drums, wide mixes,
+                powerful 808&apos;s, and hooks that stick. The studio is built
+                for artists who want clarity from the first take through a
+                release-ready master.
               </p>
             </div>
             <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-white/10">
